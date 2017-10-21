@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  news_site_id: 1
-  cate_group_id: 1
+  news_sites_id: 1
+  cate_groups_id: 1
 
 two:
-  news_site_id: 1
-  cate_group_id: 1
+  news_sites_id: 1
+  cate_groups_id: 1

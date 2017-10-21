@@ -1,0 +1,42 @@
+<div class="content-header">
+  <div class="header-section">
+    <h1>
+      <i class="fa fa-table"></i>User Management<br><small>All user of this site!</small>
+    </h1>
+  </div>
+</div>
+<ul class="breadcrumb breadcrumb-top">
+  <li>User</li>
+  <li><a href="">All User</a></li>
+</ul>
+<div class="block full">
+    <div class="table-responsive">
+      <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Avatar</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        	<%@users.each do |user|%>
+        	<tr>
+					  <td class="text-center"><%=user.id%></td>
+					  <td class="text-center">AVATAR</td>
+					  <td><%= link_to user.name, user %></td>
+					  <td><%= user.email%></td>
+					  <td class="text-center">
+					    <div class="btn-group">
+					      <%= link_to edit_user_path(user.id), class: "btn btn-xs btn-default" do %><i class="fa fa-pencil"></i><% end %>
+					      <%= link_to user, method: :delete, data: {confirm: "Bạn có chắc muốn xóa nó?"}, class: "btn btn-xs btn-danger" do %><i class="fa fa-times"></i> <% end %>
+					    </div>
+					  </td>
+					</tr>
+					<%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>

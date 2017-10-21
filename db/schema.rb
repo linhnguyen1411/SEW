@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019141414) do
+ActiveRecord::Schema.define(version: 20171023160936) do
 
   create_table "categories", force: :cascade do |t|
-    t.integer "site_cate_group_id"
+    t.integer "category_group_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20171019141414) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "news_sites", force: :cascade do |t|
@@ -44,22 +45,24 @@ ActiveRecord::Schema.define(version: 20171019141414) do
   end
 
   create_table "site_cate_groups", force: :cascade do |t|
-    t.integer "news_site_id"
-    t.integer "cate_group_id"
+    t.integer "news_sites_id"
+    t.integer "cate_groups_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "user_category_groups", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "cate_group_id"
+    t.integer "category_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "roles", default: 2
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

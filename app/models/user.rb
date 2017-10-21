@@ -5,5 +5,7 @@ class User < ApplicationRecord
     	    :recoverable, :rememberable, :trackable, :validatable, 
          	:confirmable
     has_many :user_category_groups
-    has_many :category_groups, through :user_category_groups
+    has_many :category_groups, through: :user_category_groups
+
+    enum roles: {admin: 0, mod: 1, user: 2}
 end

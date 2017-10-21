@@ -1,0 +1,27 @@
+<%= form_with(model: site_cate_group, local: true) do |form| %>
+  <% if site_cate_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(site_cate_group.errors.count, "error") %> prohibited this site_cate_group from being saved:</h2>
+
+      <ul>
+      <% site_cate_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :news_sites_id %>
+    <%= form.number_field :news_sites_id, id: :site_cate_group_news_sites_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cate_groups_id %>
+    <%= form.number_field :cate_groups_id, id: :site_cate_group_cate_groups_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

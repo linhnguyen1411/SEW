@@ -1,0 +1,122 @@
+<div id="sidebar">
+    <!-- Wrapper for scrolling functionality -->
+    <div class="sidebar-scroll">
+        <!-- Sidebar Content -->
+        <div class="sidebar-content">
+            <!-- Brand -->
+            <%= link_to admin_pages_path, class: "sidebar-brand" do %>
+                <i class="gi gi-flash"></i><strong>SEW</strong>
+                <%end%>
+            <div class="sidebar-section sidebar-user clearfix">
+                <div class="sidebar-user-avatar">
+                    <a href="page_ready_user_profile.html">
+                        <%=image_tag "placeholders/avatars/avatar2.jpg" %>
+                    </a>
+                </div>
+                <div class="sidebar-user-name"><%= current_user.name%></div>
+                <div class="sidebar-user-links">
+                    <a href="page_ready_user_profile.html" data-toggle="tooltip" data-placement="bottom" title="Profile"><i class="gi gi-user"></i></a>
+                    <a href="page_ready_inbox.html" data-toggle="tooltip" data-placement="bottom" title="Messages"><i class="gi gi-envelope"></i></a>
+                    <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
+                    <a href="#modal-user-settings" data-toggle="modal" class="enable-tooltip" data-placement="bottom" title="Settings"><i class="gi gi-cogwheel"></i></a>
+                    <%=link_to raw('<i class="gi gi-exit"></i>'), destroy_user_session_path,:method => :delete %>
+                </div>
+            </div>
+            <!-- END User Info -->
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="index.html" class=" active"><i class="gi gi-stopwatch sidebar-nav-icon"></i>Dashboard</a>
+                </li>
+                <%if current_user.admin? %>
+                    <li><!--User management -->
+                        <a href="javascript:void(0)" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator"></i><i class="gi gi-certificate sidebar-nav-icon"></i>User Management</a>
+                        <ul style="display: none;">
+                            <li>
+                                <%=link_to "All user", users_path %>
+                            </li>
+                            <li>
+                                <%=link_to "Add new user", new_user_path%>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><!--News management -->
+                        <a href="javascript:" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator"></i><i class="gi gi-certificate sidebar-nav-icon"></i>News Management</a>
+                        <ul style="display: none;">
+                            <li>
+                                <%=link_to "News site Management", news_sites_path%>
+                            </li>
+                            <li>
+                                <%= link_to "News Feed", news_index_path %>
+                            </li>
+                            <li>
+                                <%=link_to "Cate Group Management", category_groups_path%>
+                            </li>
+                            <li>
+                                <%=link_to "Categories Management", categories_path%>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><!--Music play management -->
+                        <a href="javascript:" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator"></i><i class="gi gi-certificate sidebar-nav-icon"></i>Music Management</a>
+                        <ul style="display: none;">
+                            <li>
+                                <a href="page_ui_grid_blocks.html">Grid &amp; Blocks</a>
+                            </li>
+                            <li>
+                                <a href="page_ui_draggable_blocks.html">Draggable Blocks</a>
+                            </li>
+                            <li>
+                                <a href="page_ui_typography.html">Typography</a>
+                            </li>
+                            <li>
+                                <a href="page_ui_buttons_dropdowns.html">Buttons &amp; Dropdowns</a>
+                            </li>
+                            <li>
+                                <a href="page_ui_navigation_more.html">Navigation &amp; More</a>
+                            </li>
+                            <li>
+                                <a href="page_ui_horizontal_menu.html">Horizontal Menu</a>
+                            </li>
+                            <li>
+                                <a href="page_ui_progress_loading.html">Progress &amp; Loading</a>
+                            </li>
+                            <li>
+                                <a href="page_ui_preloader.html">Page Preloader</a>
+                            </li>
+                            <li>
+                                <a href="page_ui_color_themes.html">Color Themes</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-header">
+                        <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a><a href="javascript:void(0)" data-toggle="tooltip" title="Create the most amazing pages with the widget kit!"><i class="gi gi-lightbulb"></i></a></span>
+                        <span class="sidebar-header-title">Management</span>
+                    </li>
+                    <li>
+                        <a href="page_widgets_stats.html"><i class="gi gi-charts sidebar-nav-icon"></i>Statistics</a>
+                    </li>
+                    <li>
+                        <a href="page_widgets_social.html"><i class="gi gi-share_alt sidebar-nav-icon"></i>Social</a>
+                    </li>
+                    <li>
+                        <a href="page_widgets_media.html"><i class="gi gi-film sidebar-nav-icon"></i>Media</a>
+                    </li>
+                    <li>
+                        <a href="page_widgets_links.html"><i class="gi gi-link sidebar-nav-icon"></i>Links</a>
+                    </li>
+                    <li class="sidebar-header">
+                        <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a></span>
+                        <span class="sidebar-header-title">Design Kit</span>
+                    </li>
+                <%else%>
+                    <li class="sidebar-header">
+                    <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a><a href="javascript:void(0)" data-toggle="tooltip" title="Create the most amazing pages with the widget kit!"><i class="gi gi-lightbulb"></i></a></span>
+                    <span class="sidebar-header-title">User Profile</span>
+                </li>
+                <%end%>
+            </ul>
+        </div>
+        <!-- END Sidebar Content -->
+    </div>
+    <!-- END Wrapper for scrolling functionality -->
+</div>
