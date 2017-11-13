@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>News site:</strong>
+  <%= @rss_url.news_site_id %>
+</p>
+
+<p>
+  <strong>Category group:</strong>
+  <%= @rss_url.category_group_id %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @rss_url.url %>
+</p>
+
+<%= link_to 'Edit', edit_rss_url_path(@rss_url) %> |
+<%= link_to 'Back', rss_urls_path %>

@@ -4,12 +4,12 @@ one:
   category_id: 1
   title: MyString
   description: MyText
-  pubDate: 2017-10-19
+  pubDate: 2017-10-21
   link: MyString
 
 two:
   category_id: 1
   title: MyString
   description: MyText
-  pubDate: 2017-10-19
+  pubDate: 2017-10-21
   link: MyString
