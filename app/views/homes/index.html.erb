@@ -6,74 +6,67 @@
 </section>
 <section class="site-content site-section">
   <div class="container">
-    <div class="row">
-      <div class="col-sm-8 col-md-9 newsest">
-        <div class="col-md-6">
-          <h4 class="site-heading"><strong>Tin</strong> Mới nhất</h4>
-          <%@news.each do |new| %>
-            <div class="col-md-6 image-news">
-              <%= raw new.image %>
-              <span>
-                <%= link_to new.title, new.link, target: "_blank" %>
-              </span>
+    <%=link_to "ádasd",new_news_path%>
+    <% if @news && @five_news %>
+      <div class="row">
+        <div class="col-sm-8 col-md-9 newsest">
+          <div class="col-md-6">
+            <h4 class="site-heading"><strong>Tin</strong> Mới nhất</h4>
+            <%@news.each do |new| %>
+              <div class="col-md-6 image-news">
+                <%= raw new.image %>
+                <span>
+                  <%= link_to new.title, new.link, target: "_blank" %>
+                </span>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-md-6">
+            <h4 class="site-heading"><strong>News</strong> Feed</h4>
+              <ul class="fa-ul ul-breath">
+                <%@five_news.each do |new|%>
+                  <li><i class="fa fa-angle-right fa-li"></i>
+                    <%= link_to new.title, new.link, target: "_blank" %> </br>
+                    <span>
+                      <i class="fa fa-user"></i> by <%= link_to new.site, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.category_group.name%>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+          </div>
+        </div>
+        <!-- END Posts -->
+        <!-- Sidebar -->
+        <div class="col-sm-4 col-md-3">
+          <aside class="sidebar site-block">
+            <!-- Search -->
+            <div class="sidebar-block">
+
             </div>
-          <% end %>
+            <div class="sidebar-block">
+              <script type="text/javascript">
+                epi_id = 'epi-widget-container';
+                epi_width = 'auto';
+                epi_height = 'auto';
+                epi_theme = 'widgetDisplayThemeBlue';
+                epi_border = 0;
+                epi_target = 0;
+                </script>
+                <script type="text/javascript" src="http://www.baomoi.com/Widget/JS/Widget.js"></script>
+                <script type="text/javascript" src="http://www.baomoi.com/Widget/GenerateJS.aspx?zone=0&count=5&ntype=popular&dtype=2&target=0"></script>
+            </div>
+            <!-- END Popular and Recent -->
+            <!-- About -->
+            <div class="sidebar-block">
+              <h4 class="site-heading"><strong>About</strong> Us</h4>
+              <p>Etiam egestas fringilla enim, id convallis lectus laoreet at. Fusce purus nisi, gravida sed consectetur ut, interdum quis nisi. Quisque egestas nisl id lectus facilisis scelerisque? Proin rhoncus dui at ligula vestibulum ut facilisis ante sodales! Suspendisse potenti. Aliquam tincidunt sollicitudin sem nec ultrices.</p>
+            </div>
+            <!-- END About -->
+          </aside>
         </div>
-        <div class="col-md-6">
-          <h4 class="site-heading"><strong>News</strong> Feed</h4>
-            <ul class="fa-ul ul-breath">
-              <%@five_news.each do |new|%>
-                <li><i class="fa fa-angle-right fa-li"></i>
-                  <%= link_to new.title, new.link, target: "_blank" %> </br>
-                  <span>
-                    <i class="fa fa-user"></i> by <%= link_to new.site, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.category_group.name%>
-                  </span>
-                </li>
-              <% end %>
-            </ul>
-        </div>
+        <!-- END Sidebar -->
       </div>
-      <!-- END Posts -->
-      <!-- Sidebar -->
-      <div class="col-sm-4 col-md-3">
-        <aside class="sidebar site-block">
-          <!-- Search -->
-          <div class="sidebar-block">
-            <%if signed_in? %>
-              <a href="javascript:void(0)"><i class="fa fa-angle-down site-nav-arrow"></i>Welcome : <%=current_user.name%></a>
-              <a href="blog.html" class="active">Profile</a>
-              <a href="blog_post.html">User setting</a>
-              <%if current_user.admin? %>
-                <%= link_to "Admin Pages", admin_pages_path%>
-              <%end%>
-                 <%=link_to "Đăng xuất", destroy_user_session_path,:method => :delete %>
-              <%else%>
-                <%=link_to "Đăng nhập", new_user_session_path %>
-            <%end%>
-          </div>
-          <div class="sidebar-block">
-            <script type="text/javascript">
-              epi_id = 'epi-widget-container';
-              epi_width = 'auto';
-              epi_height = 'auto';
-              epi_theme = 'widgetDisplayThemeBlue';
-              epi_border = 0;
-              epi_target = 0;
-              </script>
-              <script type="text/javascript" src="http://www.baomoi.com/Widget/JS/Widget.js"></script>
-              <script type="text/javascript" src="http://www.baomoi.com/Widget/GenerateJS.aspx?zone=0&count=5&ntype=popular&dtype=2&target=0"></script>
-          </div>
-          <!-- END Popular and Recent -->
-          <!-- About -->
-          <div class="sidebar-block">
-            <h4 class="site-heading"><strong>About</strong> Us</h4>
-            <p>Etiam egestas fringilla enim, id convallis lectus laoreet at. Fusce purus nisi, gravida sed consectetur ut, interdum quis nisi. Quisque egestas nisl id lectus facilisis scelerisque? Proin rhoncus dui at ligula vestibulum ut facilisis ante sodales! Suspendisse potenti. Aliquam tincidunt sollicitudin sem nec ultrices.</p>
-          </div>
-          <!-- END About -->
-        </aside>
-      </div>
-      <!-- END Sidebar -->
-    </div>
+    <% end %>
   </div>
 </section>
 <!-- END Footer -->

@@ -1,7 +1,15 @@
 namespace :db do
   desc "TODO"
-  task make_data: [:create_users, :create_news_sites, :create_category_groups,
+  task make_data: [:create_admin, :create_users, :create_news_sites, :create_category_groups,
     :create_rss_urls] do
+  end
+  task create_admin: :environment do
+      Admin.create!(
+      name: "Admin",
+      email: "sew.info.2017@gmail.com",
+      password: "Aa@123",
+      password_confirmation: "Aa@123"
+    )
   end
   task create_users: :environment do
     User.create!(
