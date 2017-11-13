@@ -89,9 +89,10 @@ class NewsController < ApplicationController
         index = index + 4
         image = result.description.to(index)
         result.description = result.description.from(index+1).to(-1)
-        result = { category_group_id: rss_link.category_group_id,title: result.title, pubDate: result.pubDate,
+        result = { rss_url_id: rss_link.id, news_site_id: rss_link.news_site_id,
+          category_id: rss_link.category_id,title: result.title, pubDate: result.pubDate,
           link: result.link, description: result.description, image: image,
-          site: rss_link.news_site.name, highlight: 0 }
+          highlight: 0 , }
         @rss_results.push(result)
       end
       return @rss_results
