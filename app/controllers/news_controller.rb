@@ -6,7 +6,7 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @news = News.all
+    @news = News.all.page(params[:page]).per(10)
   end
 
   # GET /news/1
@@ -17,9 +17,12 @@ class NewsController < ApplicationController
   # GET /news/new
   def new
     @news = News.new
-    news
-    @rss_results.each do |rss_result|
-      news = News.create(rss_result)
+    rss_links = RssUrl.all
+    rss_links.each do |rss_link|
+      news rss_link
+      @rss_results.each do |rss_result|
+        news = News.create(rss_result)
+      end
     end
   end
 
@@ -75,19 +78,20 @@ class NewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:category_id, :title, :description, :pubDate, :link)
+      params.require(:news).permit(:category_id, :title, :description, :pubDate, :link, :highlight)
     end
 
-    def news
+    def news rss_link
       @rss_results = []
-      rss = RSS::Parser.parse(open("https://vnexpress.net/rss/tin-moi-nhat.rss").read, false).items[0..10]
+      rss = RSS::Parser.parse(open(rss_link.url).read, false).items[0..10]
       rss.each do |result|
         index = result.description.index('</br>')
         index = index + 4
         image = result.description.to(index)
         result.description = result.description.from(index+1).to(-1)
-        result = { category_id: 1,title: result.title, pubDate: result.pubDate,
-          link: result.link, description: result.description, image: image }
+        result = { category_group_id: rss_link.category_group_id,title: result.title, pubDate: result.pubDate,
+          link: result.link, description: result.description, image: image,
+          site: rss_link.news_site.name, highlight: 0 }
         @rss_results.push(result)
       end
       return @rss_results

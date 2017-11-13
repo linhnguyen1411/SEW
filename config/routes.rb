@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rss_urls
   devise_for :users, controllers: {sessions: "sessions", passwords: "passwords"}
 
   resources :news

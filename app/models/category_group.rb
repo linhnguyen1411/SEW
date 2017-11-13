@@ -4,4 +4,6 @@ class CategoryGroup < ApplicationRecord
 	has_many :user_category_groups
 	has_many :users, through: :user_category_groups
 	has_many :categories
+  has_many :rss_urls
+  has_many :news
 end

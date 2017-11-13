@@ -15,3 +15,6 @@
 //= require jquery-1.11.1.min.js
 //= require bootstrap.min.js
 //= require_tree .
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets

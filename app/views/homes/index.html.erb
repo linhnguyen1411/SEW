@@ -1,170 +1,79 @@
-    <section class="site-section site-section-light site-section-top themed-background-dark">
-        <div class="container">
-            <h1 class="animation-slideDown"><strong>Latest News</strong></h1>
-            <h2 class="h3 animation-slideUp">Learn about our progress and offers!</h2>
-        </div>
-    </section>
-    <section class="site-content site-section">
-        <div class="container">
-            <div class="row">
-                <!-- Posts -->
-                <div class="col-sm-8 col-md-9">
-                    <!-- Blog Post -->
-                    <%@news.each do |new| %>
-                    <div class="site-block">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p>
-                                   <%= raw new.image%>
-                                </p>
-                            </div>
-                            <div class="col-md-8">
-                                <h3 class="site-heading"><strong><%= new.title%></strong></h3>
-                                <p><%= raw new.description%> [...]</p>
-                            </div>
-                        </div>
-                        <div class="clearfix">
-                            <p class="pull-right">
-                                <%= link_to "Read more..", new.link , class: "label label-primary",target: "_blank"%>
-                            </p>
-                            <ul class="list-inline pull-left">
-                                <li><i class="fa fa-calendar"></i><%=new.pubDate%></li>
-                                <li><i class="fa fa-user"></i> by <a href="javascript:void(0)">VNExpress</a></li>
-                                <li><i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.category.name%></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <%end%>
-                    <!-- END Blog Post -->
-                    <!-- Pagination -->
-                    <div class="text-right">
-                        <ul class="pagination">
-                            <li><a href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>
-                            <li class="active"><a href="javascript:void(0)">1</a></li>
-                            <li><a href="javascript:void(0)">2</a></li>
-                            <li><a href="javascript:void(0)">3</a></li>
-                            <li><a href="javascript:void(0)">4</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- END Pagination -->
-                </div>
-                <!-- END Posts -->
-
-                <!-- Sidebar -->
-                <div class="col-sm-4 col-md-3">
-                    <aside class="sidebar site-block">
-                        <!-- Search -->
-                        <div class="sidebar-block">
-                            <form action="blog.html" method="post" onsubmit="return false;">
-                                <div class="input-group">
-                                    <input type="text" id="search-term" name="searh-term" class="form-control" placeholder="Search..">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- END Search -->
-
-                        <!-- Categories -->
-                        <div class="sidebar-block">
-                            <h4 class="site-heading"><strong>News</strong> Categories</h4>
-                            <ul class="fa-ul ul-breath">
-                                <li><i class="fa fa-angle-right fa-li"></i> <a href="javascript:void(0)">Updates</a></li>
-                                <li><i class="fa fa-angle-right fa-li"></i> <a href="javascript:void(0)">Special Offers</a></li>
-                                <li><i class="fa fa-angle-right fa-li"></i> <a href="javascript:void(0)">Products</a></li>
-                                <li><i class="fa fa-angle-right fa-li"></i> <a href="javascript:void(0)">Features</a></li>
-                                <li><i class="fa fa-angle-right fa-li"></i> <a href="javascript:void(0)">Articles</a></li>
-                                <li><i class="fa fa-angle-right fa-li"></i> <a href="javascript:void(0)">Tutorials</a></li>
-                                <li><i class="fa fa-angle-right fa-li"></i> <a href="javascript:void(0)">Guides</a></li>
-                            </ul>
-                        </div>
-                        <!-- END Categories -->
-
-                        <!-- Popular and Recent -->
-                        <div class="sidebar-block">
-                            <h4 class="site-heading"><strong>Best</strong> Articles</h4>
-                            <ul class="nav nav-tabs push-bit" data-toggle="tabs">
-                                <li class="active"><a href="#posts-popular"><i class="fa fa-trophy"></i> Popular</a></li>
-                                <li><a href="#posts-recent"><i class="fa fa-clock-o"></i> Recent</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="posts-popular">
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar12.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>How to be more productive</strong></a></h5>
-                                        <small class="text-muted">1 year ago</small>
-                                    </div>
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar2.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>CSS3 &amp; HTML5 Tutorial</strong></a></h5>
-                                        <small class="text-muted">6 days ago</small>
-                                    </div>
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar3.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>How to push your company forward</strong></a></h5>
-                                        <small class="text-muted">15 days ago</small>
-                                    </div>
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar1.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>How to stop procrastination</strong></a></h5>
-                                        <small class="text-muted">2 years ago</small>
-                                    </div>
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar11.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>New updates and more!</strong></a></h5>
-                                        <small class="text-muted">1 month ago</small>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:void(0)" class="label label-primary">Read More..</a>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="posts-recent">
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar6.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>How to push your company forward</strong></a></h5>
-                                        <small class="text-muted">1 day ago</small>
-                                    </div>
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar4.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>New updates and more!</strong></a></h5>
-                                        <small class="text-muted">1 week ago</small>
-                                    </div>
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar16.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>How to be more productive</strong></a></h5>
-                                        <small class="text-muted">2 weeks ago</small>
-                                    </div>
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar9.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>CSS3 &amp; HTML5 Tutorial</strong></a></h5>
-                                        <small class="text-muted">1 month ago</small>
-                                    </div>
-                                    <div class="content-float clearfix">
-                                        <img src="img/placeholders/avatars/avatar5.jpg" alt="Avatar" class="img-circle pull-left">
-                                        <h5><a href="javascript:void(0)"><strong>How to stop procrastination</strong></a></h5>
-                                        <small class="text-muted">2 months ago</small>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="javascript:void(0)" class="label label-primary">Read More..</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END Popular and Recent -->
-
-                        <!-- About -->
-                        <div class="sidebar-block">
-                            <h4 class="site-heading"><strong>About</strong> Us</h4>
-                            <p>Etiam egestas fringilla enim, id convallis lectus laoreet at. Fusce purus nisi, gravida sed consectetur ut, interdum quis nisi. Quisque egestas nisl id lectus facilisis scelerisque? Proin rhoncus dui at ligula vestibulum ut facilisis ante sodales! Suspendisse potenti. Aliquam tincidunt sollicitudin sem nec ultrices.</p>
-                        </div>
-                        <!-- END About -->
-                    </aside>
-                </div>
-                <!-- END Sidebar -->
+<section class="site-section site-section-light site-section-top themed-background-dark">
+  <div class="container">
+    <h1 class="animation-slideDown"><strong>Latest News</strong></h1>
+    <h2 class="h3 animation-slideUp">Learn about our progress and offers!</h2>
+  </div>
+</section>
+<section class="site-content site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-9 newsest">
+        <div class="col-md-6">
+          <h4 class="site-heading"><strong>Tin</strong> Mới nhất</h4>
+          <%@news.each do |new| %>
+            <div class="col-md-6 image-news">
+              <%= raw new.image %>
+              <span>
+                <%= link_to new.title, new.link, target: "_blank" %>
+              </span>
             </div>
+          <% end %>
         </div>
-    </section>
-
-    <!-- END Footer -->
+        <div class="col-md-6">
+          <h4 class="site-heading"><strong>News</strong> Feed</h4>
+            <ul class="fa-ul ul-breath">
+              <%@five_news.each do |new|%>
+                <li><i class="fa fa-angle-right fa-li"></i>
+                  <%= link_to new.title, new.link, target: "_blank" %> </br>
+                  <span>
+                    <i class="fa fa-user"></i> by <%= link_to new.site, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.category_group.name%>
+                  </span>
+                </li>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+      <!-- END Posts -->
+      <!-- Sidebar -->
+      <div class="col-sm-4 col-md-3">
+        <aside class="sidebar site-block">
+          <!-- Search -->
+          <div class="sidebar-block">
+            <%if signed_in? %>
+              <a href="javascript:void(0)"><i class="fa fa-angle-down site-nav-arrow"></i>Welcome : <%=current_user.name%></a>
+              <a href="blog.html" class="active">Profile</a>
+              <a href="blog_post.html">User setting</a>
+              <%if current_user.admin? %>
+                <%= link_to "Admin Pages", admin_pages_path%>
+              <%end%>
+                 <%=link_to "Đăng xuất", destroy_user_session_path,:method => :delete %>
+              <%else%>
+                <%=link_to "Đăng nhập", new_user_session_path %>
+            <%end%>
+          </div>
+          <div class="sidebar-block">
+            <script type="text/javascript">
+              epi_id = 'epi-widget-container';
+              epi_width = 'auto';
+              epi_height = 'auto';
+              epi_theme = 'widgetDisplayThemeBlue';
+              epi_border = 0;
+              epi_target = 0;
+              </script>
+              <script type="text/javascript" src="http://www.baomoi.com/Widget/JS/Widget.js"></script>
+              <script type="text/javascript" src="http://www.baomoi.com/Widget/GenerateJS.aspx?zone=0&count=5&ntype=popular&dtype=2&target=0"></script>
+          </div>
+          <!-- END Popular and Recent -->
+          <!-- About -->
+          <div class="sidebar-block">
+            <h4 class="site-heading"><strong>About</strong> Us</h4>
+            <p>Etiam egestas fringilla enim, id convallis lectus laoreet at. Fusce purus nisi, gravida sed consectetur ut, interdum quis nisi. Quisque egestas nisl id lectus facilisis scelerisque? Proin rhoncus dui at ligula vestibulum ut facilisis ante sodales! Suspendisse potenti. Aliquam tincidunt sollicitudin sem nec ultrices.</p>
+          </div>
+          <!-- END About -->
+        </aside>
+      </div>
+      <!-- END Sidebar -->
+    </div>
+  </div>
+</section>
+<!-- END Footer -->

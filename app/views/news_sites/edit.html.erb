@@ -1,6 +1,14 @@
+<% provide(:button_text, "Lưu thay đổi") %>
 <h1>Editing News Site</h1>
-
-<%= render 'form', news_site: @news_site %>
-
-<%= link_to 'Show', @news_site %> |
-<%= link_to 'Back', news_sites_path %>
+<div id="page-content">
+  <ul class="breadcrumb breadcrumb-top">
+    <li>News Site</li>
+    <li>Edit</li>
+  </ul>
+  <div class="block full">
+    <div class="block-title text-center">
+      <h1><%= t"user.edit.title" %></h1>
+    </div>
+  <%= render 'form', news_site: @news_site %>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @news.category_id %>
+  <strong>Category Group:</strong>
+  <%= @news.category_group_id %>
 </p>
 
 <p>
@@ -12,7 +12,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @news.image %>
+  <%= raw @news.image %>
 </p>
 
 <p>

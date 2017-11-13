@@ -13,7 +13,7 @@
                             <i class="fa fa-times"></i>
                         </a>
                     </li>
-                    <%@cate_groups.each do |ctg| %>  
+                    <%@cate_groups.each do |ctg| %>
                       <li >
                           <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i><%= ctg.name%></a>
                           <ul>
@@ -42,29 +42,6 @@
                                   <a href="helpdesk.html">Helpdesk</a>
                               </li>
                           </ul>
-                      </li>
-                    <%end%>
-                    <%if signed_in? %>
-                      <li>
-                        <a href="javascript:void(0)" class="site-nav-sub""><i class="fa fa-angle-down site-nav-arrow"></i>Welcome : <%=current_user.name%></a>
-                          <ul>
-                            <li>
-                                <a href="blog.html" class="active">Profile</a>
-                            </li>
-                            <li>
-                                <a href="blog_post.html">User setting</a>
-                            </li>
-                            <%if current_user.admin? %>
-                              <li><%= link_to "Admin Pages", admin_pages_path%></li>
-                            <%end%>
-                            <li>
-                               <%=link_to "Đăng xuất", destroy_user_session_path,:method => :delete %> 
-                            </li>
-                        </ul>
-                      </li>
-                    <%else%>
-                      <li>
-                        <%=link_to "Đăng nhập", new_user_session_path %>  
                       </li>
                     <%end%>
                 </ul>
