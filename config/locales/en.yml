@@ -37,3 +37,9 @@ en:
         menu: 'Get News'
         title: 'Get news...'
         breadcrumb: 'GetNews'
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        # The defaults are "about 1 hour" and "about %{count} hours"
+        one: "1 giờ"
+        other: "%{count} giờ"
