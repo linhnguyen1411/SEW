@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin!
   before_action :load_user
-  
+
   def index
     @users = User.all
   end
