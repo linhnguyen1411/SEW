@@ -1,27 +1,30 @@
 <section class="site-section site-section-light site-section-top themed-background-dark">
   <div class="container">
-    <h1 class="animation-slideDown"><strong>Latest News</strong></h1>
-    <h2 class="h3 animation-slideUp">Learn about our progress and offers!</h2>
+    <h1 class="animation-slideDown"><strong>Chủ đề nóng</strong></h1>
+    <h2 class="h3 animation-slideUp">Tuần Apec Đà Nẵng 11-16/11/2017!</h2>
   </div>
 </section>
 <section class="site-content site-section">
   <div class="container">
     <% if @news && @five_news %>
       <div class="row">
-        <div class="col-sm-8 col-md-9 newsest">
-          <div class="col-md-6">
-            <h4 class="site-heading"><strong>Tin</strong> Mới nhất</h4>
-            <%@news.each do |new| %>
-              <div class="col-md-6 image-news">
-                <%= raw new.image %>
-                <span>
-                  <%= link_to new.title, new.link, target: "_blank" %>
-                </span>
-              </div>
-            <% end %>
-          </div>
-          <div class="col-md-6">
-            <h4 class="site-heading"><strong>News</strong> Feed</h4>
+        <div class="col-sm-8 col-md-9" style="margin-top: -14px">
+          <div class="row">
+            <div class="col-md-6">
+              <a href="#" class="btn btn-danger" >Tin nóng</a>
+              <div class="one-line-block"></div>
+              <%@news.each do |new| %>
+                <div class="col-md-6 image-news">
+                  <%= raw new.image %>
+                  <span>
+                    <%= link_to new.title, new.link, target: "_blank" %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <a href="#" class="btn btn-danger" >Tin mới nhất</a>
+              <div class="one-line-block"></div>
               <ul class="fa-ul ul-breath">
                 <%@five_news.each do |new|%>
                   <li><i class="fa fa-angle-right fa-li"></i>
@@ -31,11 +34,133 @@
                     </span>
                   </li>
                 <% end %>
-              </ul>
+                </ul>
+            </div>
           </div>
+          <div class="one-line"></div>
+          <div class="row" style="padding-top: 15px">
+            <div class="col-md-4 block-new">
+              <a href="#" class="btn btn-danger" >Khoa học</a>
+              <div class="one-line-block"></div>
+              <ul class="list-unstyled">
+                <% @test.each do |t| %>
+                  <li style="padding-top: 8px"><%= link_to t.title, t.link %>
+                    </br>
+                    <span style="font-size: 12px; font-style: italic;">
+                      <%= t.rss_url.news_site.name %>|<%=time_ago_in_words t.pubDate %>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="col-md-4 block-new">
+              <a href="#" class="btn btn-danger" >Đời sống</a>
+              <div class="one-line-block"></div>
+              <ul class="list-unstyled">
+                <% @test.each do |t| %>
+                  <li style="padding-top: 8px"><%= link_to t.title, t.link %>
+                    </br>
+                    <span style="font-size: 12px; font-style: italic;">
+                      <%= t.rss_url.news_site.name %>|<%=time_ago_in_words t.pubDate %>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="col-md-4 block-new">
+              <a href="#" class="btn btn-danger" >Thể thao</a>
+              <div class="one-line-block"></div>
+              <ul class="list-unstyled">
+                <% @test.each do |t| %>
+                  <li style="padding-top: 8px"><%= link_to t.title, t.link %>
+                    </br>
+                    <span style="font-size: 12px; font-style: italic;">
+                      <%= t.rss_url.news_site.name %>|<%=time_ago_in_words t.pubDate %>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+              <div class="row">
+
+              </div>
+              <div class="row"></div>
+            </div>
+          </div>
+          <div class="one-line" style="padding-top: 5px"></div>
+          <div class="row" style="padding-top: 15px">
+            <div class="col-md-4 block-new">
+              <a href="#" class="btn btn-danger" >Công nghệ</a>
+              <div class="one-line-block"></div>
+              <ul class="list-unstyled">
+                <% @test1.each do |t| %>
+                  <li style="padding-top: 8px"><%= link_to t.title, t.link %>
+                    </br>
+                    <span style="font-size: 12px; font-style: italic;">
+                      <%= t.rss_url.news_site.name %>|<%=time_ago_in_words t.pubDate %>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="col-md-4 block-new">
+              <a href="#" class="btn btn-danger" >Du lịch</a>
+              <div class="one-line-block"></div>
+              <ul class="list-unstyled">
+                <% @test.each do |t| %>
+                  <li style="padding-top: 8px"><%= link_to t.title, t.link %>
+                    </br>
+                    <span style="font-size: 12px; font-style: italic;">
+                      <%= t.rss_url.news_site.name %>|<%=time_ago_in_words t.pubDate %>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+              </br>
+              <div class="one-line"></div></br>
+              <a href="#" class="btn btn-danger">Du lịch</a>
+              <div class="one-line-block"></div>
+              <ul class="list-unstyled">
+                <% @test2.each do |t| %>
+                  <li style="padding-top: 8px"><%= link_to t.title, t.link %>
+                    </br>
+                    <span style="font-size: 12px; font-style: italic;">
+                      <%= t.rss_url.news_site.name %>|<%=time_ago_in_words t.pubDate %>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="col-md-4 block-new">
+              <a href="#" class="btn btn-danger" >Du lịch</a>
+              <div class="one-line-block"></div>
+              <ul class="list-unstyled">
+                <% @test3.each do |t| %>
+                  <li style="padding-top: 8px"><%= link_to t.title, t.link %>
+                    </br>
+                    <span style="font-size: 12px; font-style: italic;">
+                      <%= t.rss_url.news_site.name %>|<%=time_ago_in_words t.pubDate %>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+              </br>
+              <div class="one-line"></div></br>
+              <a href="#" class="btn btn-danger">Du lịch</a>
+              <div class="one-line-block"></div>
+              <ul class="list-unstyled">
+                <% @test3.each do |t| %>
+                  <li style="padding-top: 8px"><%= link_to t.title, t.link %>
+                    </br>
+                    <span style="font-size: 12px; font-style: italic;">
+                      <%= t.rss_url.news_site.name %>|<%=time_ago_in_words t.pubDate %>
+                    </span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="one-line" style="padding-top: 5px;height: 50px"></div>
         </div>
-        <!-- END Posts -->
-        <!-- Sidebar -->
         <div class="col-sm-4 col-md-3">
           <aside class="sidebar site-block">
             <!-- Search -->
@@ -68,4 +193,3 @@
     <% end %>
   </div>
 </section>
-<!-- END Footer -->
