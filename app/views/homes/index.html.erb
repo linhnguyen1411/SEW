@@ -6,7 +6,6 @@
 </section>
 <section class="site-content site-section">
   <div class="container">
-    <%=link_to "ádasd",new_news_path%>
     <% if @news && @five_news %>
       <div class="row">
         <div class="col-sm-8 col-md-9 newsest">
@@ -28,7 +27,7 @@
                   <li><i class="fa fa-angle-right fa-li"></i>
                     <%= link_to new.title, new.link, target: "_blank" %> </br>
                     <span>
-                      <i class="fa fa-user"></i> by <%= link_to new.site, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.category_group.name%>
+                      <i class="fa fa-user"></i> by <%= link_to new.rss_url.news_site.name, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.rss_url.category.name%>
                     </span>
                   </li>
                 <% end %>

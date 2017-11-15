@@ -13,35 +13,49 @@
                             <i class="fa fa-times"></i>
                         </a>
                     </li>
-                    <%@cate_groups.each do |ctg| %>
+                    <% @cate_groups.each do |ctg| %>
                       <li >
-                          <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i><%= ctg.name%></a>
+                        <a href="javascript:void(0)" class="site-nav-sub"><i class="fa fa-angle-down site-nav-arrow"></i><%= ctg.name%></a>
+                        <ul>
+                          <% ctg.categories.each do |c| %>
+                            <li>
+                              <a href="#"><%= c.name%></a>
+                            </li>
+                          <% end %>
+                        </ul>
+                      </li>
+                    <% end %>
+                    <% if signed_in? %>
+                      <% if current_user.present? %>
+                      <li>
+                        <a href="javascript:void(0)" class="site-nav-sub""><i class="fa fa-angle-down site-nav-arrow"></i>Welcome : <%=current_user.name%></a>
                           <ul>
-                              <li>
-                                  <a href="blog.html" class="active">Blog</a>
-                              </li>
-                              <li>
-                                  <a href="blog_post.html">Blog Post</a>
-                              </li>
-                              <li>
-                                  <a href="portfolio_4.html">Portfolio 4 Columns</a>
-                              </li>
-                              <li>
-                                  <a href="portfolio_3.html">Portfolio 3 Columns</a>
-                              </li>
-                              <li>
-                                  <a href="portfolio_2.html">Portfolio 2 Columns</a>
-                              </li>
-                              <li>
-                                  <a href="portfolio_single.html">Portfolio Single</a>
-                              </li>
-                              <li>
-                                  <a href="team.html">Team</a>
-                              </li>
-                              <li>
-                                  <a href="helpdesk.html">Helpdesk</a>
-                              </li>
+                            <li>
+                                <a href="blog.html" class="active">Profile</a>
+                            </li>
+                            <li>
+                                <a href="blog_post.html">User setting</a>
+                            </li>
+                            <li>
+                               <%=link_to "Đăng xuất", destroy_user_session_path,:method => :delete %>
+                            </li>
+                        </ul>
+                      </li>
+                      <% elsif current_admin.present? %>
+                        <li>
+                          <a href="javascript:void(0)" class="site-nav-sub""><i class="fa fa-angle-down site-nav-arrow"></i>Welcome :  Admin</a>
+                          <ul>
+                            <li><%= link_to "Get News", new_news_path, remote: :true%></li>
+                            <li><%= link_to "Admin Pages", rails_admin_path%></li>
+                            <li>
+                              <%=link_to "Đăng xuất", destroy_admin_session_path,:method=> :delete %>
+                            </li>
                           </ul>
+                        </li>
+                      <% end %>
+                    <%else%>
+                      <li>
+                        <%=link_to "Đăng nhập", new_user_session_path %>
                       </li>
                     <%end%>
                 </ul>
