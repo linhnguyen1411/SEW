@@ -1,4 +1,14 @@
-<div class="container">
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Login</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Pages</a></li>
+            <li class="active">Login</li>
+        </ul>
+    </div><!--/container-->
+</div>
+<div class="container" style="padding-top: 50px">
     <div class="row">
         <div class="col-md-5 col-md-offset-1">
             <div id="login-alt-container">
@@ -33,13 +43,13 @@
                     <h1><strong>Login</strong></h1>
                 </div>
                 <div class="block push-bit">
-                    <%= form_for(resource, as: resource_name, url: session_path(resource_name), 
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name),
                       html: {id: "form-login", class: "form-horizontal"}) do |f| %>
                       <%= devise_error_messages! %>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-user-secret" aria-hidden="true"></i></span>
                                     <%= f.email_field :email, autofocus: true, class: "form-control input-lg" %>
                                 </div>
                             </div>
@@ -47,7 +57,7 @@
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="gi gi-asterisk"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i> </span>
                                     <%= f.password_field :password, autocomplete: "off",class: "form-control input-lg" %>
                                 </div>
                             </div>
@@ -56,7 +66,7 @@
                             <div class="col-xs-4">
                                 <label class="switch switch-primary" data-toggle="tooltip" title="Remember Me?">
                                     <%= f.check_box :remember_me %>
-                                    <span></span>
+                                    <span>Remember me</span>
                                 </label>
                             </div>
                             <div class="col-xs-8 text-right">
