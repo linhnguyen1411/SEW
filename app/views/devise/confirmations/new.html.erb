@@ -30,16 +30,16 @@
             <div id="login-container">
                 <!-- Login Title -->
                 <div class="login-title text-center">
-                    <h1><strong>Login</strong></h1>
+                    <h1><strong>Resend Password</strong></h1>
                 </div>
                 <div class="block push-bit">
-                    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), 
+                    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name),
                       html: {id: "form-login", class: "form-horizontal"}) do |f| %>
                       <%= devise_error_messages! %>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="gi gi-envelope"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                                     <%= f.email_field :email, autofocus: true,value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) , class: "form-control input-lg" %>
                                 </div>
                             </div>

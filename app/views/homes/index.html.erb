@@ -1,71 +1,164 @@
-<section class="site-section site-section-light site-section-top themed-background-dark">
-  <div class="container">
-    <h1 class="animation-slideDown"><strong>Latest News</strong></h1>
-    <h2 class="h3 animation-slideUp">Learn about our progress and offers!</h2>
-  </div>
-</section>
-<section class="site-content site-section">
-  <div class="container">
-    <% if @news && @five_news %>
+<div class="wrapper">
+    <div class="container content-sm">
       <div class="row">
-        <div class="col-sm-8 col-md-9 newsest">
-          <div class="col-md-6">
-            <h4 class="site-heading"><strong>Tin</strong> Mới nhất</h4>
-            <%@news.each do |new| %>
-              <div class="col-md-6 image-news">
-                <%= raw new.image %>
-                <span>
-                  <%= link_to new.title, new.link, target: "_blank" %>
-                </span>
-              </div>
-            <% end %>
-          </div>
-          <div class="col-md-6">
-            <h4 class="site-heading"><strong>News</strong> Feed</h4>
-              <ul class="fa-ul ul-breath">
-                <%@five_news.each do |new|%>
-                  <li><i class="fa fa-angle-right fa-li"></i>
-                    <%= link_to new.title, new.link, target: "_blank" %> </br>
-                    <span>
-                      <i class="fa fa-user"></i> by <%= link_to new.rss_url.news_site.name, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.rss_url.category.name%>
-                    </span>
-                  </li>
+        <div class="col-md-9 md-margin-bottom-50">
+          <!-- Blog Grid -->
+          <div class="row margin-bottom-50">
+             <div class="col-md-6">
+                <a href="#" class="btn btn-danger" >Tin nóng</a>
+                <div class="one-line-block"></div>
+                <%@news.each do |new| %>
+                  <div class="highlight">
+                    <div class="col-md-6 image-news">
+                      <%= raw new.image %>
+                      <span>
+                        <%= link_to new.title, new.link, target: "_blank" %>
+                      </span>
+                    </div>
+                  </div>
                 <% end %>
-              </ul>
+              </div>
+              <div class="col-md-6">
+                <a href="#" class="btn btn-danger" >Tin mới nhất</a>
+                <div class="one-line-block"></div>
+                <ul class="fa-ul ul-breath">
+                  <%@five_news.each do |new|%>
+                    <li><i class="fa fa-angle-right fa-li"></i>
+                      <%= link_to new.title, new.link, target: "_blank" %> </br>
+                      <span>
+                        <i class="fa fa-user"></i> by <%= link_to new.rss_url.news_site.name, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.rss_url.category.name%>
+                      </span>
+                    </li>
+                  <% end %>
+                  </ul>
+              </div>
           </div>
         </div>
-        <!-- END Posts -->
-        <!-- Sidebar -->
-        <div class="col-sm-4 col-md-3">
-          <aside class="sidebar site-block">
-            <!-- Search -->
-            <div class="sidebar-block">
+        <div class="col-md-3">
+          <!-- Blog Thumb v3 -->
+          <div class="margin-bottom-50">
+            <h2 class="title-v4">Blog &amp; Comments</h2>
 
+            <div class="blog-thumb-v3">
+              <small><a href="#">Evan Bartlett</a></small>
+              <h3><a href="#">Cameron's silence on defence is shameful</a></h3>
             </div>
-            <div class="sidebar-block">
-              <script type="text/javascript">
-                epi_id = 'epi-widget-container';
-                epi_width = 'auto';
-                epi_height = 'auto';
-                epi_theme = 'widgetDisplayThemeBlue';
-                epi_border = 0;
-                epi_target = 0;
-                </script>
-                <script type="text/javascript" src="http://www.baomoi.com/Widget/JS/Widget.js"></script>
-                <script type="text/javascript" src="http://www.baomoi.com/Widget/GenerateJS.aspx?zone=0&count=5&ntype=popular&dtype=2&target=0"></script>
+
+            <hr class="hr-xs">
+
+            <div class="blog-thumb-v3">
+              <small><a href="#">Jonathan Owen</a></small>
+              <h3><a href="#">Architects plan to stop skyscrapers from blocking out sunlight</a></h3>
             </div>
-            <!-- END Popular and Recent -->
-            <!-- About -->
-            <div class="sidebar-block">
-              <h4 class="site-heading"><strong>About</strong> Us</h4>
-              <p>Etiam egestas fringilla enim, id convallis lectus laoreet at. Fusce purus nisi, gravida sed consectetur ut, interdum quis nisi. Quisque egestas nisl id lectus facilisis scelerisque? Proin rhoncus dui at ligula vestibulum ut facilisis ante sodales! Suspendisse potenti. Aliquam tincidunt sollicitudin sem nec ultrices.</p>
+
+            <hr class="hr-xs">
+
+            <div class="blog-thumb-v3">
+              <small><a href="#">Susie Lau</a></small>
+              <h3><a href="#">Fashion's first selfies: It was a 16th-century German accountant who started the trend for style blogging</a></h3>
             </div>
-            <!-- END About -->
-          </aside>
+
+            <hr class="hr-xs">
+
+            <div class="blog-thumb-v3">
+              <small><a href="#">John Rentoul</a></small>
+              <h3><a href="#">How to run a country: A 10 point manifesto for leaders who stand – and want to deliver</a></h3>
+            </div>
+
+            <hr class="hr-xs">
+
+            <div class="blog-thumb-v3">
+              <small><a href="#">Richard Garner</a></small>
+              <h3><a href="#">Controversial plan to test new primary school pupils infuriates teachers</a></h3>
+            </div>
+          </div>
+          <!-- End Blog Thumb v3 -->
+
+          <!-- Social Shares -->
+          <div class="margin-bottom-50">
+            <h2 class="title-v4">Social</h2>
+            <ul class="blog-social-shares">
+              <li>
+                <i class="rounded-x fb fa fa-facebook"></i>
+                <a class="rounded-3x" href="#">Like</a>
+                <span class="counter">31,702</span>
+              </li>
+              <li>
+                <i class="rounded-x tw fa fa-twitter"></i>
+                <a class="rounded-3x" href="#">Follow Us</a>
+                <span class="counter">164,290</span>
+              </li>
+              <li>
+                <i class="rounded-x gp fa fa-google-plus"></i>
+                <a class="rounded-3x" href="#">Add to circle</a>
+                <span class="counter">5,425,764</span>
+              </li>
+            </ul>
+          </div>
+          <!-- End Social Shares -->
+
+          <!-- Blog Thumb v2 -->
+          <div class="margin-bottom-50">
+            <h2 class="title-v4">Recent News</h2>
+
+            <div class="blog-thumb blog-thumb-circle margin-bottom-15">
+              <div class="blog-thumb-hover">
+                <img class="rounded-x" src="assets/img/blog/img1.jpg" alt="">
+                <a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
+              </div>
+              <div class="blog-thumb-desc">
+                <h3><a href="blog_single.html">Misused words and how to use them correctly</a></h3>
+                <ul class="blog-thumb-info">
+                  <li>Mar 6, 2015</li>
+                  <li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="blog-thumb blog-thumb-circle margin-bottom-15">
+              <div class="blog-thumb-hover">
+                <img class="rounded-x" src="assets/img/blog/img22.jpg" alt="">
+                <a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
+              </div>
+              <div class="blog-thumb-desc">
+                <h3><a href="blog_single.html">8 health benefits and drawbacks of coffee</a></h3>
+                <ul class="blog-thumb-info">
+                  <li>Mar 6, 2015</li>
+                  <li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="blog-thumb blog-thumb-circle margin-bottom-15">
+              <div class="blog-thumb-hover">
+                <img class="rounded-x" src="assets/img/blog/img2.jpg" alt="">
+                <a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
+              </div>
+              <div class="blog-thumb-desc">
+                <h3><a href="blog_single.html">What are the top five books you must read?</a></h3>
+                <ul class="blog-thumb-info">
+                  <li>Mar 6, 2015</li>
+                  <li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="blog-thumb blog-thumb-circle">
+              <div class="blog-thumb-hover">
+                <img class="rounded-x" src="assets/img/blog/img21.jpg" alt="">
+                <a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
+              </div>
+              <div class="blog-thumb-desc">
+                <h3><a href="blog_single.html">Stylish things to do, see and buy this week</a></h3>
+                <ul class="blog-thumb-info">
+                  <li>Mar 6, 2015</li>
+                  <li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- End Blog Thumb v2 -->
         </div>
-        <!-- END Sidebar -->
       </div>
-    <% end %>
-  </div>
-</section>
-<!-- END Footer -->
+    </div>
+  </div><!--/wrapper-->
