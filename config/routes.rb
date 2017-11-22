@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'profiles/show'
 
+  resources :blogs
   resources :categories
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

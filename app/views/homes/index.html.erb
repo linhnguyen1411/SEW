@@ -6,7 +6,7 @@
         <div class="col-md-12 border-dotted">
           <div class="row">
             <div class="col-md-6">
-              <a href="#" class="btn btn-danger" >Tin nóng</a>
+              <p class="category-title"><span class="btn btn-danger">Tin Nóng</span></p>
               <div class="one-line-block"></div>
               <div class="row">
                 <% @news.each do |new| %>
@@ -18,20 +18,24 @@
               </div>
             </div>
             <div class="col-md-6">
-              <a href="#" class="btn btn-danger" >Tin mới nhất</a>
+              <p class="category-title"><span class="btn btn-danger">Tin Mới Nhất</span></p>
               <div class="one-line-block"></div>
               <ul class="fa-ul ul-breath ul-hotnew">
                 <% if @five_news.present? %>
                   <% @five_news.each do |new| %>
-                    <li class="over-hidden">
-                      <strong><%= link_to new.title, new.link, target: "_blank" %></strong></br>
-                      <span class="pull-left">
-                        <i class="fa fa-user"></i> <%= link_to new.rss_url.news_site.name, new.link %>
-                      </span>
-                      <span class="pull-right">
-                        <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%= new.rss_url.category.name %></a>
-                      </span>
-                    </li>
+                    <%if new == @five_news.last %>
+                      <li class="over-hidden-last">
+                    <% else %>
+                      <li class="over-hidden">
+                    <%end%>
+                        <strong><%= link_to new.title, new.link, target: "_blank" %></strong></br>
+                        <span class="pull-left">
+                          <i class="fa fa-user"></i> <%= link_to new.rss_url.news_site.name, new.link %>
+                        </span>
+                        <span class="pull-right">
+                          <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%= new.rss_url.category.name %></a>
+                        </span>
+                      </li>
                   <% end %>
                 <% end %>
               </ul>
@@ -39,101 +43,29 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
-            <div class="category-news">
-              <p class="category-title"><span class="btn btn-danger">Test</span></p>
-              <% @test.each do |test| %>
-                <li class="over-hidden">
-                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
-                  <span class="pull-left">
-                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
-                  </span>
-                  <span class="pull-right">
-                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
-                  </span>
-                </li>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="category-news">
-              <p class="category-title"><span class="btn btn-danger">Test1</span></p>
-              <% @test1.each do |test| %>
-                <li class="over-hidden">
-                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
-                  <span class="pull-left">
-                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
-                  </span>
-                  <span class="pull-right">
-                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
-                  </span>
-                </li>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="category-news">
-              <p class="category-title"><span class="btn btn-danger">Test2</span></p>
-              <% @test2.each do |test| %>
-                <li class="over-hidden">
-                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
-                  <span class="pull-left">
-                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
-                  </span>
-                  <span class="pull-right">
-                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
-                  </span>
-                </li>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="category-news">
-              <p class="category-title"><span class="btn btn-danger">Test3</span></p>
-              <% @test3.each do |test| %>
-                <li class="over-hidden">
-                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
-                  <span class="pull-left">
-                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
-                  </span>
-                  <span class="pull-right">
-                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
-                  </span>
-                </li>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="category-news">
-              <p class="category-title"><span class="btn btn-danger">Test4</span></p>
-              <% @test1.each do |test| %>
-                <li class="over-hidden">
-                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
-                  <span class="pull-left">
-                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
-                  </span>
-                  <span class="pull-right">
-                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
-                  </span>
-                </li>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="category-news">
-              <p class="category-title"><span class="btn btn-danger">Test5</span></p>
-              <% @test2.each do |test| %>
-                <li class="over-hidden">
-                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
-                  <span class="pull-left">
-                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
-                  </span>
-                  <span class="pull-right">
-                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
-                  </span>
-                </li>
-              <% end %>
-            </div>
+          <div class="col-md-12">
+          <% @cate_groups.each do |c| %>
+              <div class="col-md-4">
+                <div class="category-news">
+                  <p class="category-title"><span class="btn btn-danger"><%=c.name%></span></p>
+                  <% get_news_by_category_group(c.id).each do |test| %>
+                    <%if test == get_news_by_category_group(c.id).last %>
+                      <li class="over-hidden-last">
+                    <% else %>
+                      <li class="over-hidden">
+                    <%end%>
+                      <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
+                      <span class="pull-left">
+                        <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
+                      </span>
+                      <span class="pull-right">
+                        <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
+                      </span>
+                    </li>
+                  <% end %>
+                </div>
+              </div>
+          <% end %>
           </div>
         </div>
       </div>
@@ -143,36 +75,7 @@
           <h2 class="title-v4">Blog &amp; Comments</h2>
 
           <div class="blog-thumb-v3">
-            <small><a href="#">Evan Bartlett</a></small>
-            <h3><a href="#">Cameron's silence on defence is shameful</a></h3>
-          </div>
-
-          <hr class="hr-xs">
-
-          <div class="blog-thumb-v3">
-            <small><a href="#">Jonathan Owen</a></small>
-            <h3><a href="#">Architects plan to stop skyscrapers from blocking out sunlight</a></h3>
-          </div>
-
-          <hr class="hr-xs">
-
-          <div class="blog-thumb-v3">
-            <small><a href="#">Susie Lau</a></small>
-            <h3><a href="#">Fashion's first selfies: It was a 16th-century German accountant who started the trend for style blogging</a></h3>
-          </div>
-
-          <hr class="hr-xs">
-
-          <div class="blog-thumb-v3">
-            <small><a href="#">John Rentoul</a></small>
-            <h3><a href="#">How to run a country: A 10 point manifesto for leaders who stand – and want to deliver</a></h3>
-          </div>
-
-          <hr class="hr-xs">
-
-          <div class="blog-thumb-v3">
-            <small><a href="#">Richard Garner</a></small>
-            <h3><a href="#">Controversial plan to test new primary school pupils infuriates teachers</a></h3>
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/343015499&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
           </div>
         </div>
         <!-- End Blog Thumb v3 -->
@@ -202,62 +105,18 @@
 
         <!-- Blog Thumb v2 -->
         <div class="margin-bottom-50">
-          <h2 class="title-v4">Recent News</h2>
-
-          <div class="blog-thumb blog-thumb-circle margin-bottom-15">
-            <div class="blog-thumb-hover">
-              <img class="rounded-x" src="assets/img/blog/img1.jpg" alt="">
-              <a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
-            </div>
-            <div class="blog-thumb-desc">
-              <h3><a href="blog_single.html">Misused words and how to use them correctly</a></h3>
-              <ul class="blog-thumb-info">
-                <li>Mar 6, 2015</li>
-                <li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-              </ul>
-            </div>
+          <h2 class="title-v4">Favorites Youtube</h2>
+          <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
+            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allowfullscreen></iframe>
           </div>
-
-          <div class="blog-thumb blog-thumb-circle margin-bottom-15">
-            <div class="blog-thumb-hover">
-              <img class="rounded-x" src="assets/img/blog/img22.jpg" alt="">
-              <a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
-            </div>
-            <div class="blog-thumb-desc">
-              <h3><a href="blog_single.html">8 health benefits and drawbacks of coffee</a></h3>
-              <ul class="blog-thumb-info">
-                <li>Mar 6, 2015</li>
-                <li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-              </ul>
-            </div>
+          <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
+            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allowfullscreen></iframe>
           </div>
-
-          <div class="blog-thumb blog-thumb-circle margin-bottom-15">
-            <div class="blog-thumb-hover">
-              <img class="rounded-x" src="assets/img/blog/img2.jpg" alt="">
-              <a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
-            </div>
-            <div class="blog-thumb-desc">
-              <h3><a href="blog_single.html">What are the top five books you must read?</a></h3>
-              <ul class="blog-thumb-info">
-                <li>Mar 6, 2015</li>
-                <li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-              </ul>
-            </div>
+          <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
+            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allowfullscreen></iframe>
           </div>
-
-          <div class="blog-thumb blog-thumb-circle">
-            <div class="blog-thumb-hover">
-              <img class="rounded-x" src="assets/img/blog/img21.jpg" alt="">
-              <a class="hover-grad" href="blog_single.html"><i class="fa fa-link"></i></a>
-            </div>
-            <div class="blog-thumb-desc">
-              <h3><a href="blog_single.html">Stylish things to do, see and buy this week</a></h3>
-              <ul class="blog-thumb-info">
-                <li>Mar 6, 2015</li>
-                <li><a href="#"><i class="fa fa-comments"></i> 0</a></li>
-              </ul>
-            </div>
+          <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
+            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allowfullscreen></iframe>
           </div>
         </div>
         <!-- End Blog Thumb v2 -->

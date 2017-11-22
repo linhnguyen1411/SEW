@@ -32,6 +32,11 @@ gem 'devise'
 gem 'kaminari'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
+gem "ckeditor"
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

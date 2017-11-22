@@ -32,8 +32,9 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
-    export
+    new do
+      except ['News']
+    end
     bulk_delete
     show
     edit
@@ -44,10 +45,42 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
-  require Rails.root.join('lib', 'rails_admin', 'get_news.rb')
-  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::GetNews)
-    config.actions do
-    get_news
-    load_news
+  RailsAdmin.config do |config|
+    config.model 'CategoryGroup' do
+      edit do
+        field :name
+      end
     end
+
+    config.model 'Category' do
+      edit do
+        field :category_group
+        field :name
+      end
+    end
+
+    config.model 'Admin' do
+      edit do
+        field :name
+        field :email
+        field :password
+        field :password_confirmation
+      end
+    end
+
+     config.model 'News' do
+      edit do
+        field :category
+        field :rss_url
+        field :news_site_id
+        field :title
+        field :description
+        field :link
+        field :highlight
+        field :image
+      end
+      create do
+      end
+    end
+  end
 end
