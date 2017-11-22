@@ -6,3 +6,15 @@
 .newsest{
   border-bottom: 1px solid rgb(238, 238, 238);
 }
+.user-avatar{
+  padding-left: 10%;
+}
+.user-avatar>img{
+  border-radius: 10%;
+}
+.logo>img{
+  height: 75%;
+}
+.cate_groups{
+  padding-left: 20px;
+}

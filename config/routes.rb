@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
+
   resources :categories
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -11,6 +13,5 @@ Rails.application.routes.draw do
 
   resources :news_sites
   resources :admin_pages
-  get 'profile',to: 'users#show'
   root "homes#index"
 end
