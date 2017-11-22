@@ -3,8 +3,9 @@
     <div class="row">
       <div class="col-md-9 md-margin-bottom-50">
         <!-- Blog Grid -->
-        <div class="row margin-bottom-50">
-           <div class="col-md-6">
+        <div class="col-md-12 border-dotted">
+          <div class="row">
+            <div class="col-md-6">
               <a href="#" class="btn btn-danger" >Tin nóng</a>
               <div class="one-line-block"></div>
               <div class="row">
@@ -25,16 +26,115 @@
                     <li class="over-hidden">
                       <strong><%= link_to new.title, new.link, target: "_blank" %></strong></br>
                       <span class="pull-left">
-                        <i class="fa fa-user"></i> by <%= link_to new.rss_url.news_site.name, new.link %>
+                        <i class="fa fa-user"></i> <%= link_to new.rss_url.news_site.name, new.link %>
                       </span>
                       <span class="pull-right">
-                      <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.rss_url.category.name%>
+                        <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%= new.rss_url.category.name %></a>
                       </span>
                     </li>
                   <% end %>
                 <% end %>
-                </ul>
+              </ul>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="category-news">
+              <p class="category-title"><span class="btn btn-danger">Test</span></p>
+              <% @test.each do |test| %>
+                <li class="over-hidden">
+                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
+                  <span class="pull-left">
+                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
+                  </span>
+                  <span class="pull-right">
+                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
+                  </span>
+                </li>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="category-news">
+              <p class="category-title"><span class="btn btn-danger">Test1</span></p>
+              <% @test1.each do |test| %>
+                <li class="over-hidden">
+                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
+                  <span class="pull-left">
+                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
+                  </span>
+                  <span class="pull-right">
+                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
+                  </span>
+                </li>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="category-news">
+              <p class="category-title"><span class="btn btn-danger">Test2</span></p>
+              <% @test2.each do |test| %>
+                <li class="over-hidden">
+                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
+                  <span class="pull-left">
+                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
+                  </span>
+                  <span class="pull-right">
+                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
+                  </span>
+                </li>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="category-news">
+              <p class="category-title"><span class="btn btn-danger">Test3</span></p>
+              <% @test3.each do |test| %>
+                <li class="over-hidden">
+                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
+                  <span class="pull-left">
+                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
+                  </span>
+                  <span class="pull-right">
+                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
+                  </span>
+                </li>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="category-news">
+              <p class="category-title"><span class="btn btn-danger">Test4</span></p>
+              <% @test1.each do |test| %>
+                <li class="over-hidden">
+                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
+                  <span class="pull-left">
+                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
+                  </span>
+                  <span class="pull-right">
+                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
+                  </span>
+                </li>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="category-news">
+              <p class="category-title"><span class="btn btn-danger">Test5</span></p>
+              <% @test2.each do |test| %>
+                <li class="over-hidden">
+                  <strong><%= link_to test.title, test.link, target: "_blank" %></strong></br>
+                  <span class="pull-left">
+                    <i class="fa fa-user"></i> <%= link_to test.rss_url.news_site.name, test.link %>
+                  </span>
+                  <span class="pull-right">
+                    <i class="fa fa-clock-o"></i> <span class="time-word"><%= time_ago_in_words test.created_at %></span>
+                  </span>
+                </li>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-3">
