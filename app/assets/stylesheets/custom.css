@@ -1,7 +1,7 @@
 .image-news img{
-  width: 110%;
+  width: 100%;
   height: 100%;
-  padding: 5px;
+  margin-top: 10px;
 }
 .newsest{
   border-bottom: 1px solid rgb(238, 238, 238);
@@ -17,4 +17,14 @@
 }
 .cate_groups{
   padding-left: 20px;
+}
+.ul-hotnew {
+  margin-top: 10px;
+  margin-left: 5px !important;
+}
+.over-hidden {
+  overflow: hidden;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #e2e2e3;
 }

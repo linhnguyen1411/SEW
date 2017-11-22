@@ -18,7 +18,8 @@ a:hover,
 a:active,
 button,
 button:hover {
-	 outline: 0 !important;
+	text-decoration: none !important;
+	outline: 0 !important;
 }
 
 a:focus {
