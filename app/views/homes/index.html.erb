@@ -7,27 +7,28 @@
            <div class="col-md-6">
               <a href="#" class="btn btn-danger" >Tin nóng</a>
               <div class="one-line-block"></div>
-              <%@news.each do |new| %>
-                <div class="highlight">
+              <div class="row">
+                <% @news.each do |new| %>
                   <div class="col-md-6 image-news">
                     <%= raw new.image %>
-                    <span>
-                      <%= link_to new.title, new.link, target: "_blank" %>
-                    </span>
+                    <p><strong><%= link_to new.title, new.link, target: "_blank" %></strong></p>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
             <div class="col-md-6">
               <a href="#" class="btn btn-danger" >Tin mới nhất</a>
               <div class="one-line-block"></div>
-              <ul class="fa-ul ul-breath">
+              <ul class="fa-ul ul-breath ul-hotnew">
                 <% if @five_news.present? %>
-                  <%@five_news.each do |new|%>
-                    <li><i class="fa fa-angle-right fa-li"></i>
-                      <%= link_to new.title, new.link, target: "_blank" %> </br>
-                      <span>
-                        <i class="fa fa-user"></i> by <%= link_to new.rss_url.news_site.name, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.rss_url.category.name%>
+                  <% @five_news.each do |new| %>
+                    <li class="over-hidden">
+                      <strong><%= link_to new.title, new.link, target: "_blank" %></strong></br>
+                      <span class="pull-left">
+                        <i class="fa fa-user"></i> by <%= link_to new.rss_url.news_site.name, new.link %>
+                      </span>
+                      <span class="pull-right">
+                      <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.rss_url.category.name%>
                       </span>
                     </li>
                   <% end %>

@@ -98,6 +98,7 @@ class NewsController < ApplicationController
       @rss_results = []
       rss = RSS::Parser.parse(open(rss_link.url).read, false).items[0..10]
       rss.each do |result|
+
         index = result.description.index('</br>')
         index = index + 4
         image = result.description.to(index)
