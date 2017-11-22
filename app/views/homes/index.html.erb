@@ -22,13 +22,15 @@
               <a href="#" class="btn btn-danger" >Tin mới nhất</a>
               <div class="one-line-block"></div>
               <ul class="fa-ul ul-breath">
-                <%@five_news.each do |new|%>
-                  <li><i class="fa fa-angle-right fa-li"></i>
-                    <%= link_to new.title, new.link, target: "_blank" %> </br>
-                    <span>
-                      <i class="fa fa-user"></i> by <%= link_to new.rss_url.news_site.name, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.rss_url.category.name%>
-                    </span>
-                  </li>
+                <% if @five_news.present? %>
+                  <%@five_news.each do |new|%>
+                    <li><i class="fa fa-angle-right fa-li"></i>
+                      <%= link_to new.title, new.link, target: "_blank" %> </br>
+                      <span>
+                        <i class="fa fa-user"></i> by <%= link_to new.rss_url.news_site.name, new.link %>|| <i class="fa fa-tag"></i> <a href="javascript:void(0)"><%=new.rss_url.category.name%>
+                      </span>
+                    </li>
+                  <% end %>
                 <% end %>
                 </ul>
             </div>
