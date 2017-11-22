@@ -105,7 +105,7 @@ class NewsController < ApplicationController
         result = { rss_url_id: rss_link.id, news_site_id: rss_link.news_site_id,
           category_id: rss_link.category_id,title: result.title, pubDate: result.pubDate,
           link: result.link, description: result.description, image: image,
-          highlight: 0 , }
+          highlight: 0 }
         @rss_results.push(result)
       end
       return @rss_results
@@ -122,7 +122,7 @@ class NewsController < ApplicationController
         result = { rss_url_id: rss_link.id, news_site_id: rss_link.news_site_id,
           category_id: rss_link.category_id,title: result.title, pubDate: result.pubDate,
           link: result.link, description: result.description, image: image,
-          highlight: 0 , }
+          highlight: 0}
         @rss_results.push(result)
       end
       return @rss_results
