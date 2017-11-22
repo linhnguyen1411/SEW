@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin!
   before_action :load_user
-  
+
   def index
     @users = User.all
   end
 
+  def show
+
+  end
   def new
     @user = User.new
   end
@@ -23,12 +25,26 @@ class UsersController < ApplicationController
 
   def edit; end
 
-  def update # patch
-    if @user.update_attributes user_params
-      flash[:success] = "Update thành công"
-      redirect_to @user
+  def update
+    if params[:type] == "choose"
+      @ucg = UserCategoryGroup.create user_id: params[:id], category_group_id: params[:cate_groups_id]
+      if @ucg.save
+        respond_to do |format|
+          format.json do
+            render json: {type: success, cate_groups_id: params[:cate_groups_id]}
+            binding.pry
+          end
+        end
+      end
     else
-      render :edit
+      if @user.update_attributes user_params
+        @success = true
+      else
+        @success = false
+      end
+      respond_to do |format|
+        format.js
+      end
     end
   end
 
@@ -42,7 +58,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit :name, :email, :password,
-      :password_confirmation, :roles
+      :password_confirmation
   end
 
   def load_user

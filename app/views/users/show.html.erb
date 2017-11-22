@@ -1,2 +1,106 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="breadcrumbs breadcrumbs-light">
+  <div class="container">
+    <h1 class="pull-left">Trang cá nhân</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Profile</a></li>
+      <li class="active"><%= current_user.name %></li>
+    </ul>
+  </div>
+</div>
+<div class="container content">
+  <div class="row">
+    <div class="col-md-3 md-margin-bottom-50">
+      <div class="margin-bottom-50">
+        <h2 class="title-v4">Ảnh đại diện</h2>
+        <div class="blog-thumb-v3" >
+          <div class="user-avatar">
+            <%= image_tag "user.jpg", class: "img-responsive"%>
+          </div>
+        </div>
+        <hr class="hr-xs">
+        <div class="blog-thumb-v3">
+          <small><a href="#">Jonathan Owen</a></small>
+          <h3><a href="#">Architects plan to stop skyscrapers from blocking out sunlight</a></h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="tab-v1">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#site-setting" data-toggle="tab" aria-expanded="true">Thiết lập</a></li>
+    <li class=""><a href="#notification" data-toggle="tab" aria-expanded="false">Thông báo</a></li>
+    <li class=""><a href="#change-info" data-toggle="tab" aria-expanded="false">Thay đổi thông tin</a></li>
+  </ul>
+  <div class="tab-content">
+    <!-- Success Forms -->
+    <span class="user" data-userid="<%=current_user.id%>"></span>
+    <div class="tab-pane fade active in" id="site-setting">
+      <div class="site" style="padding-top: 20px">
+        <div class="cate_groups">
+          <%= form_for @user, html: {class: "form-horizontal"}, remote: true do |f|%>
+            Tùy chọn danh mục :
+            <div class="form-group choose-cate">
+              <% @cate_groups.each do |ctg| %>
+                <%= f.check_box(:category_groups, { :multiple => true }, ctg.id) %>
+                <label class="control-label" style="padding-right: 20px"><%=ctg.name%></label>
+              <% end %>
+            </div>
+            <hr class="hr-xs">
+            <%= f.submit "Lưu thay đổi", class: "btn btn-primary" %>
+          <%end%>
+        </div>
+      </div>
+    </div>
+    <!-- End Success Forms -->
+    <!-- Error Forms -->
+    <div class="tab-pane fade" id="notification">
+
+    </div>
+    <!-- End Error Forms -->
+    <!-- Disabled Forms -->
+    <div class="tab-pane fade" id="change-info">
+      <% provide(:button_text, "Lưu thay đổi") %>
+      <%= render "form"%>
+    </div>
+    <!-- End Disabled Forms -->
+  </div>
+</div>
+    </div>
+  </div><!--/end row-->
+</div>
+<script type="text/javascript">
+  $(".choose-cate :checkbox").change(function() {
+    if(this.checked) {
+      var cate_groups_id = this.value;
+      var user_id = $('.user').data('userid');
+      var type = "choose";
+      $.ajax({
+        url: '/users/' + user_id,
+        type: 'PUT',
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        dataType: 'json',
+        data: {
+          cate_groups_id: cate_groups_id,
+          type: type
+        },
+        success: function (data) {
+          debugger
+          if(data.type)
+            sweetAlert(I18n.t('success'), data.mess, 'success');
+          else if(data.not_login)
+            window.location.replace('/users/sign_in');
+          else
+            sweetAlert(I18n.t('error'), data.mess, 'error');
+        },
+        error: function () {
+          response([]);
+        }
+      });
+    }
+    else{
+      alert('ko');
+    }
+});
+</script>
