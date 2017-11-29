@@ -6,4 +6,5 @@ class User < ApplicationRecord
          	:confirmable
     has_many :user_category_groups
     has_many :category_groups, through: :user_category_groups
+    has_many :blogs
 end

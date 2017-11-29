@@ -7,7 +7,7 @@ class News < ApplicationRecord
   scope :ordered_by_date, -> { order(pubDate: :desc) }
   scope :get_news, -> id {where "id < ?",id}
   scope :get_news_by_category, -> id{where category_id: id}
-  scope :get_news_by_cate_group, ->list {where "category_id IN (?)", list}
+  scope :get_news_by_list_category, ->list {where "category_id IN (?)", list}
 
 
   private

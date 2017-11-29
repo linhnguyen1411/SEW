@@ -1,0 +1,47 @@
+<div class="breadcrumbs breadcrumbs-light">
+  <div class="container">
+    <h1 class="pull-left">Tạo bài viết</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="">Blogs</a></li>
+      <li class="active">New</li>
+    </ul>
+  </div>
+</div>
+<div class="container content">
+  <div class="row">
+    <div class="panel panel-green margin-bottom-40">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-file-text-o" aria-hidden="true"></i> Tạo bài viết mới</h3>
+        </div>
+        <div class="panel-body">
+            <%= form_for Blog.create, html: {class: "form-horizontal"} do |f| %>
+              <div class="form-group">
+                <%= f.label :category_id, "Thể loại", required: true, class: "col-lg-2 control-label" %>
+                <div class="col-lg-10">
+                  <%= f.select %>
+                </div>
+              </div>
+              <div class="form-group">
+                  <%= f.label :title, "Tiêu đề",required: true, class: "col-lg-2 control-label" %>
+                  <div class="col-lg-10">
+                    <%= f.text_field :title, class: "form-control" , placeholder: "Tiêu đề bài viết" %>
+                  </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :content, "Nội dung", class: "col-lg-2 control-label" %>
+                <div class="col-lg-10">
+                  <%= f.text_area :content, minlength: 500,
+                    required: true, class: "form-control ckeditor", id: "ckeditor" %>
+                </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <%= f.submit "Tạo bài viết", class: "btn-u btn-u-green" %>
+                  </div>
+              </div>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</div>

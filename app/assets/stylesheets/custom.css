@@ -28,10 +28,16 @@
   padding-bottom: 5px;
   border-bottom: 1px dotted #e2e2e3;
 }
+.over-hidden-last{
+  overflow: hidden;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
 .category-news {
   margin-top: 10px;
-  padding-bottom: 20px;
-  margin-bottom: 50px;
+/*  padding-bottom: 20px;
+  margin-bottom: 50px;*/
 }
 .category-news li {
   list-style: none;
@@ -49,5 +55,9 @@
   overflow: hidden;
   padding: 0 !important;
   border-bottom: 1px dotted #e2e2e3;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
+}
+.meta-data{
+  padding: 10px;
+  padding-bottom: 10px;
 }
