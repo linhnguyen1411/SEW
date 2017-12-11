@@ -1,0 +1,7 @@
+<% if @success %>
+  swal('Sửa thành công', '','info');
+  $('.user-video-content').html('<%= j render "users/table_user_video" %>');
+<% else %>
+  swal('Sửa không thành công', '','danger');
+<% end %>
+$('#edit-video').modal('hide');

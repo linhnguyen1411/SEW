@@ -1,0 +1,139 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+vi:
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: khoảng 1 giờ
+        other: khoảng %{count} giờ
+      about_x_months:
+        one: khoảng 1 tháng
+        other: khoảng %{count} tháng
+      about_x_years:
+        one: khoảng 1 năm
+        other: khoảng %{count} năm
+      almost_x_years:
+        one: gần 1 năm
+        other: gần %{count} năm
+      half_a_minute: 30 giây
+      less_than_x_minutes:
+        one: chưa tới 1 phút
+        other: chưa tới %{count} phút
+      less_than_x_seconds:
+        one: chưa tới 1 giây
+        other: chưa tới %{count} giây
+      over_x_years:
+        one: hơn 1 năm
+        other: hơn %{count} năm
+      x_days:
+        one: 1 ngày
+        other: ! '%{count} ngày'
+      x_minutes:
+        one: 1 phút
+        other: ! '%{count} phút'
+      x_months:
+        one: 1 tháng
+        other: ! '%{count} tháng'
+      x_seconds:
+        one: 1 giây
+        other: ! '%{count} giây'
+  time:
+    formats:
+      custom_date: "%d-%m-%Y"
+      short_date: "%m/%d/%Y"
+      short_time: "%H:%M"
+      date_format: "MM/DD/YYYY"
+      dmy_format: "%d/%m/%Y"
+      full_time: "%H:%M %d/%m/%Y"
+  devise:
+    sessions:
+      user:
+        signed_in: "Đăng nhập thành công"
+        signed_out: "Đăng xuất thành công"
+    failure:
+      admin:
+        unauthenticated: "Bạn không có quyền truy cập, hãy đăng nhập trước hoặc liên hệ với quản trị viên."
+  hello: "Hello world"
+  language:
+    languages: "Ngôn ngữ"
+    vi: "Tiếng Việt"
+    en: "Tiếng Anh"
+  home: "Trang chủ"
+  title: "Tiêu đề"
+  save_change: "Lưu thay đổi"
+  add_new: "Thêm mới"
+  edit: "Chỉnh sửa"
+  back: "Quay lại"
+  admin:
+    welcome_to_admin_page: "Chào mừng bạn đến với trang quản trị SEW"
+    welcome: "Xin chào"
+    logout: "Đăng xuất"
+    site_management: "Quản trị website"
+    actions:
+      action: "Hành động"
+      list: "Danh sách"
+      new: "Thêm mới"
+      edit: "Sửa"
+      remove: "Xóa"
+    model:
+      user: "Người dùng"
+      category: "Danh mục"
+      category_group: "Thể loại"
+      news_site: "Trang nguồn"
+      news: "Tin tức"
+      rss: "Đường dẫn RSS"
+      views: "Lượt xem"
+      blogs: "Bài viết"
+    user:
+      manager: "Quản trị người dùng"
+      all_user: "Danh sách người dùng trên trang web"
+      name: "Tên"
+      password: "Mật khẩu"
+      password_confirmation: "Nhập lại mật khẩu"
+    category_group:
+      name: "Tên thể loại"
+      all_category_group: "Danh sách thể loại"
+    category:
+      name: "Tên danh mục"
+      all_category: "Danh sách danh mục"
+    news_site:
+      name: "Trang nguồn"
+      all_news_site: "Danh sách trang nguồn"
+      url: "Đường dẫn"
+    rss_url:
+      name: "Đường dẫn rss"
+      all_rss_url: "Danh sách đường dẫn RSS"
+      url: "Đường dẫn"
+    news:
+      news_feed: "Lấy tin nhanh"
+      all_news: "Danh sách tin tức"
+      title: "Tiêu đề"

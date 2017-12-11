@@ -2,7 +2,7 @@ module NewsHelper
 
   def get_news_by_category_group category_group_id
     list = Category.get_list_category(category_group_id).pluck(:id)
-    News.get_news_by_list_category(list).limit(7)
+    News.get_news_by_list_category(list).ordered_by_date.limit(7)
   end
 
   def get_news_by_user user
@@ -11,3 +11,4 @@ module NewsHelper
     News.get_news_by_list_category(list_category).ordered_by_date.page(params[:page]).per 8
   end
 end
+

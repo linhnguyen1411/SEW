@@ -29,12 +29,13 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'kaminari'
-gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'jquery-rails'
 gem "ckeditor"
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
-
+gem 'delayed_job_active_record'
+gem "daemons"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'

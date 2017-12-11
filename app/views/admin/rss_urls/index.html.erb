@@ -1,0 +1,52 @@
+<div class="tab-v1">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#list" data-toggle="tab"><%= t "admin.actions.list" %></a></li>
+    <li>
+      <%= link_to new_admin_rss_url_path do %>
+        <i class="fa fa-plus" aria-hidden="true"></i><%= t "add_new" %>
+      <% end %>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="list">
+      <div class="panel panel-red margin-bottom-40">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-user"></i><%= t "admin.rss_url.all_rss_url" %></h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th><%= t "admin.news_site.name" %></th>
+                      <th><%= t "admin.category.name" %></th>
+                      <th><%= t "admin.rss_url.name" %></th>
+                      <th><%= t "admin.actions.action" %></th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @rss_urls.each do |rss|%>
+                  <tr class="rss-<%=rss.id%>">
+                    <td><%= rss.id %></td>
+                    <td><%= rss.news_site.name %></td>
+                    <td><%= rss.category.name %></td>
+                    <td><%= rss.url %></td>
+                    <td>
+                      <%= link_to edit_admin_rss_url_path(rss.id), class: "btn btn-xs btn-default" do %><i class="fa fa-pencil"></i> <%= t "admin.actions.edit" %><% end %>
+                      <%= link_to admin_rss_url_path(rss), method: :delete, remote: true, data: {confirm: "Bạn chắc chắn muốn xóa ?"},
+                        class: "btn btn-danger btn-xs" do %>
+                          <i class="fa fa-trash-o"></i><%= t "admin.actions.remove" %>
+                        <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+        <div class="panel-footer">
+          <%= paginate @rss_urls,:theme => 'twitter-bootstrap-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

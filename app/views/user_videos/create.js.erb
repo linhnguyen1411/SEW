@@ -1,0 +1,7 @@
+<% if @success == true %>
+  swal('Thêm thành công','','success');
+  $('#add-new-video').modal('hide');
+  $('.user-video-content').html('<%= j render "users/table_user_video" %>');
+<% else %>
+  swal('Thêm thất bại','','danger');
+<% end %>

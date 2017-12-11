@@ -1,0 +1,9 @@
+<% provide(:button_text, t("add_new")) %>
+<div id="page-content">
+  <div class="block full">
+    <div class="block-title text-center">
+      <h1><%= t "add_new" %></h1>
+    </div>
+      <%= render "form", locals: {user: @user}  %>
+  </div>
+</div>

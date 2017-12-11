@@ -31,9 +31,57 @@
 
 en:
   hello: "Hello world"
+  language:
+    languages: "Languages"
+    vi: "Vietnamese"
+    en: "English"
+  home: "Home"
+  title: "Title"
+  save_change: "Save Change"
+  add_new: "Add New"
+  edit: "Editting"
+  back: "Back"
   admin:
+    welcome_to_admin_page: "Welcome to admin page of SEW"
+    welcome: "Welcome"
+    logout: "Log out"
+    site_management: "Site Management"
     actions:
-      getnews:
-        menu: 'Get News'
-        title: 'Get news...'
-        breadcrumb: 'GetNews'
+      action: "Action"
+      list: "List"
+      new: "Add New"
+      edit: "Edit"
+      remove: "Remove"
+    model:
+      user: "User"
+      category: "Category"
+      category_group: "Category Group"
+      news_site: "News Site"
+      news: "News"
+      rss: "Rss Links"
+      views: "Views"
+      blogs: "Blogs"
+    user:
+      manager: "User Management"
+      all_user: "List of Users"
+      name: "Name"
+      password: "Password"
+      password_confirmation: "Password Confirmation"
+    category_group:
+      name: "Category Group"
+      all_category_group: "List of Category Group"
+    category:
+      name: "Category"
+      all_category: "List of Category"
+    news_site:
+      name: "News Site Resource"
+      all_news_site: "List of News Site Resource"
+      url: "Url"
+    rss_url:
+      name: "RSS Url"
+      all_rss_url: "List of RSS Url"
+      url: "Url"
+    news:
+      news_feed: "Get News Feed"
+      all_news: "List of News Feed"
+      title: "Title"

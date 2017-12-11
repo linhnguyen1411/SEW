@@ -7,4 +7,6 @@ class User < ApplicationRecord
     has_many :user_category_groups
     has_many :category_groups, through: :user_category_groups
     has_many :blogs
+    has_many :user_musics
+    has_many :user_videos
 end

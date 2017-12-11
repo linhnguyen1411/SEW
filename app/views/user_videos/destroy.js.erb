@@ -1,0 +1,6 @@
+<% if @success %>
+  $('.uv-<%=@user_video.id%>').fadeOut();
+  swal('Xóa thành công', '', 'info');
+<% else %>
+  swal('Xóa thất bại', '', 'danger');
+<% end %>

@@ -1,0 +1,14 @@
+<%= form_for([:admin, @category_group], html: { class: "form-horizontal form-bordered form-control-borderless", style: "padding-top: 20px" }, remote: true) do |f| %>
+<div class="form-group">
+  <%= f.label :name, t("admin.category_group.name"), class: "col-md-3 control-label" %>
+  <div class="col-md-5">
+    <%= f.text_field :name, class: "form-control", placeholder: t("admin.category_group.name") %>
+  </div>
+</div>
+<div class="form-group form-actions">
+  <div class="col-md-9 col-md-offset-3">
+    <%= f.submit yield(:button_text), class: "btn btn-sm btn-primary" %>
+    <%= link_to t("back"), admin_category_groups_path, class: "btn btn-sm btn-success" %>
+  </div>
+</div>
+<% end %>

@@ -24,9 +24,9 @@
                 <% if @five_news.present? %>
                   <% @five_news.each do |new| %>
                     <%if new == @five_news.last %>
-                      <li class="over-hidden-last">
+                      <li class="over-hidden-newest-last">
                     <% else %>
-                      <li class="over-hidden">
+                      <li class="over-hidden-newest">
                     <%end%>
                         <strong><%= link_to new.title, new.link, target: "_blank" %></strong></br>
                         <span class="pull-left">
@@ -72,17 +72,21 @@
       <div class="col-md-3">
         <!-- Blog Thumb v3 -->
         <div class="margin-bottom-50">
-          <h2 class="title-v4">Blog &amp; Comments</h2>
+          <h2 class="title-v4">Trình phát nhạc</h2>
 
           <div class="blog-thumb-v3">
-            <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/343015499&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
+            <% if current_user.present? %>
+              <%= raw current_user.user_musics.get_active.first.try(:url)%>
+            <% else %>
+            <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/278814081&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
+            <% end %>
           </div>
         </div>
         <!-- End Blog Thumb v3 -->
 
         <!-- Social Shares -->
         <div class="margin-bottom-50">
-          <h2 class="title-v4">Social</h2>
+          <h2 class="title-v4">Mạng Xã Hội</h2>
           <ul class="blog-social-shares">
             <li>
               <i class="rounded-x fb fa fa-facebook"></i>
@@ -105,19 +109,23 @@
 
         <!-- Blog Thumb v2 -->
         <div class="margin-bottom-50">
-          <h2 class="title-v4">Favorites Youtube</h2>
-          <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
-            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allowfullscreen></iframe>
-          </div>
-          <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
-            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allowfullscreen></iframe>
-          </div>
-          <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
-            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allowfullscreen></iframe>
-          </div>
-          <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
-            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allowfullscreen></iframe>
-          </div>
+          <h2 class="title-v4">Video yêu thích</h2>
+          <% if current_user.present? %>
+            <%current_user.user_videos.limit(5).each do |uv| %>
+              <div class="blog-thumb blog-thumb-circle margin-bottom-15 " style="border-bottom: 1px dotted #e2e2e3;">
+                <%= raw uv.url%>
+              </div>
+            <% end %>
+          <% else %>
+            <iframe src="https://www.youtube.com/embed/6fXEsroBpEU" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/4Yhk1sXTNgU" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/AAWb6LQZl_Y" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/6fXEsroBpEU" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/4Yhk1sXTNgU" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/HKHYcTpHHmQ" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/AAWb6LQZl_Y" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+          <% end %>
         </div>
         <!-- End Blog Thumb v2 -->
       </div>

@@ -1,0 +1,6 @@
+<% if @success %>
+  $('.us-<%=@user_music.id%>').fadeOut();
+  swal('Xóa thành công', '', 'info');
+<% else %>
+  swal('Xóa thất bại', '', 'danger');
+<% end %>

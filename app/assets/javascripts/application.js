@@ -12,11 +12,13 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require jquery-1.11.1.min.js
-//= require bootstrap.min.js
+//= require jquery.min.js
 //= require_tree .
-//= require jquery3
 //= require popper
-//= require bootstrap-sprockets
 //= require sweetalert
 //= require ckeditor/init
+
+$(document).ready(function(){
+  $('iframe').removeAttr('width');
+  $('iframe').removeAttr('height');
+})

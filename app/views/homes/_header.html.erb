@@ -5,20 +5,7 @@
     </a>
     <div class="topbar">
       <ul class="loginbar pull-right">
-        <li class="hoverSelector">
-          <i class="fa fa-globe"></i>
-          <a>Languages</a>
-          <ul class="languages hoverSelectorBlock">
-            <li class="active">
-              <a href="#">English <i class="fa fa-check"></i></a>
-            </li>
-            <li><a href="#">Vietnamese</a></li>
-          </ul>
-        </li>
-        <li class="topbar-devider"></li>
-        <li><a href="page_faq.html">Help</a></li>
         <% if current_user %>
-          <li class="topbar-devider"></li>
           <li class="hoverSelector">
             <a>Welcome: <%= current_user.name%></a>
             <ul class="languages hoverSelectorBlock" style="min-width: 150px">
@@ -33,9 +20,7 @@
           <li class="hoverSelector">
             <a>Welcome: <%= current_admin.name%></a>
             <ul class="languages hoverSelectorBlock" style="min-width: 150px">
-              <li class="">
-                <%= link_to "Get News Feed ", new_news_path%>
-              </li>
+              <li><%= link_to "Trang quản trị", admins_path %></li>
               <li><%= link_to "Đăng xuất", destroy_user_session_path, :method => :delete %></li>
             </ul>
           </li>
@@ -66,7 +51,7 @@
               </a>
               <ul class="dropdown-menu">
                 <%ctg.categories.each do |c| %>
-                  <li><a href="index.html"><%= c.name %></a></li>
+                  <li><a href="javascript:"><%= c.name %></a></li>
                 <% end %>
               </ul>
             </li>
@@ -79,7 +64,7 @@
               </a>
               <ul class="dropdown-menu">
                 <%ctg.categories.each do |c| %>
-                  <li><a href="index.html"><%= c.name %></a></li>
+                  <li><a href="javascript:"><%= c.name %></a></li>
                 <% end %>
               </ul>
             </li>

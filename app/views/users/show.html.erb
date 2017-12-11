@@ -20,86 +20,241 @@
         </div>
         <hr class="hr-xs">
         <div class="blog-thumb-v3" style="text-align: center;">
-          <strong><h4><%=current_user.name%></h4></strong>
-          <h3><a href="#">Architects plan to stop skyscrapers from blocking out sunlight</a></h3>
+          <strong>
+            <h4><%=current_user.name%></h4>
+          </strong>
         </div>
       </div>
     </div>
-
     <div class="col-md-9">
       <div class="tab-v1">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#news" data-toggle="tab" aria-expanded="true">Tin nóng</a></li>
-    <li><a href="#site-setting" data-toggle="tab" aria-expanded="true">Thiết lập</a></li>
-    <li><a href="#post" data-toggle="tab" aria-expanded="true">Bài viết</a></li>
-    <li class=""><a href="#notification" data-toggle="tab" aria-expanded="false">Thông báo</a></li>
-    <li class=""><a href="#music-playlist" data-toggle="tab" aria-expanded="false">Tạo playlist nhạc</a></li>
-    <li class=""><a href="#video-playlist" data-toggle="tab" aria-expanded="false">Tạo playlist youtube</a></li>
-    <li class=""><a href="#change-info" data-toggle="tab" aria-expanded="false">Thay đổi thông tin</a></li>
-  </ul>
-  <div class="tab-content">
-    <!-- Success Forms -->
-    <span class="user" data-userid="<%=current_user.id%>"></span>
-    <div class="tab-pane fade active in " id="news">
-      <div class="col-sm-12">
-        <h4>Các Danh mục bạn lựa chọn :</h4>
-      </div>
-      <%@news.each do |n| %>
-        <div class="col-sm-12 over-hidden">
-          <p><strong><%= link_to n.title, n.link, target: "_blank" %></strong></p>
-          <span style="font-style: italic;">
-            <i class="fa fa-user"></i> <%= link_to n.rss_url.news_site.name, n.rss_url.news_site.url, target: "_blank" %>
-            <i class="fa fa-tag" style="padding-left: 20px"></i> <%= n.rss_url.category.name %>
-          </span>
-          <div class="news-description">
-            <%= n.description %>
+        <ul class="nav nav-tabs" id="user-setting-tab">
+          <li class="active"><a href="#news" data-toggle="tab" aria-expanded="true">Tin nóng</a></li>
+          <li><a href="#site-setting" data-toggle="tab" aria-expanded="true">Thiết lập</a></li>
+          <!-- <li><a href="#post" data-toggle="tab" aria-expanded="true">Bài viết</a></li> -->
+          <li class=""><a href="#music-playlist" data-toggle="tab" aria-expanded="false">Tạo playlist nhạc</a></li>
+          <li class=""><a href="#video-playlist" data-toggle="tab" aria-expanded="false">Tạo playlist youtube</a></li>
+          <li class=""><a href="#change-info" data-toggle="tab" aria-expanded="false">Thay đổi thông tin</a></li>
+        </ul>
+        <div class="tab-content">
+          <!-- Success Forms -->
+          <span class="user" data-userid="<%=current_user.id%>"></span>
+          <div class="tab-pane fade active in " id="news">
+            <div class="col-sm-12">
+              <h4>Các Danh mục bạn lựa chọn :</h4>
+            </div>
+            <%@news.each do |n| %>
+            <div class="col-sm-12 over-hidden">
+              <p><strong><%= link_to n.title, n.link, target: "_blank" %></strong></p>
+              <span style="font-style: italic;">
+              <i class="fa fa-user"></i> <%= link_to n.rss_url.news_site.name, n.rss_url.news_site.url, target: "_blank" %>
+              <i class="fa fa-tag" style="padding-left: 20px"></i> <%= n.rss_url.category.name %>
+              </span>
+              <div class="news-description">
+                <%= n.description %>
+              </div>
+            </div>
+            <% end %>
+            <%= paginate @news, theme: 'twitter-bootstrap-3'%>
           </div>
-        </div>
-      <% end %>
-      <%= paginate @news, theme: 'twitter-bootstrap-3'%>
-    </div>
-    <div class="tab-pane fade " id="site-setting">
-      <div class="site" style="padding-top: 20px">
-        <div class="cate_groups">
-          <% user_cate = @user.user_category_groups.pluck(:category_group_id)%>
-          <%= form_for @user, html: {class: "form-horizontal"}, remote: true do |f|%>
-            Tùy chọn danh mục :
-            <div class="form-group choose-cate">
-              <% @cate_groups.each do |ctg| %>
+          <div class="tab-pane fade " id="site-setting">
+            <div class="site" style="padding-top: 20px">
+              <div class="cate_groups">
+                <% user_cate = @user.user_category_groups.pluck(:category_group_id)%>
+                <%= form_for @user, html: {class: "form-horizontal"}, remote: true do |f|%>
+                Tùy chọn danh mục :
+                <div class="form-group choose-cate">
+                  <% @cate_groups.each do |ctg| %>
                   <%= f.check_box(:category_groups, { :multiple => true, checked: user_cate.include?(ctg.id) }, ctg.id, ) %>
                   <label class="control-label" style="padding-right: 20px"><%=ctg.name%></label>
-              <% end %>
+                  <% end %>
+                </div>
+                <hr class="hr-xs">
+                <%end%>
+              </div>
             </div>
-            <hr class="hr-xs">
-          <%end%>
+          </div>
+          <!-- End Success Forms -->
+          <!-- Error Forms -->
+          <div class="tab-pane fade" id="post">
+            <%= link_to new_blog_path, class: "btn btn-primary" do %>
+            <i class="fa fa-pencil" aria-hidden="true">Tạo bài viết</i>
+            <%end%>
+          </div>
+          <div class="tab-pane fade" id="change-info">
+            <% provide(:button_text, "Lưu thay đổi") %>
+            <%= render "form"%>
+          </div>
+          <div class="tab-pane fade" id="music-playlist">
+            <div class="col-md-8">
+              <% if current_user.user_musics.present? %>
+                <button class="btn-u" style="margin-bottom: 10px" data-toggle="modal" data-target="#add-new-music"><i class="fa fa-plus"></i>Tạo mới</button>
+                <button class="btn-u" data-toggle="modal" data-target="#modal-help-create-music">Hướng dẫn tạo Playlist</button>
+              <% end %>
+              <div class="panel panel-yellow margin-bottom-40">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><i class="fa fa-gear"></i> Quản lý nhạc của bạn
+                  </h3>
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Tiêu đề</th>
+                      <th>Trạng thái</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody class="user-music-content">
+                    <%= render "users/table_user_music"%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-4" style="text-align: center; border-left: 1px solid black">
+              <h3>Playlist nhạc của bạn :</h3>
+              <span class="user-music">
+                <%if current_user.user_musics.blank? %>
+                  Bạn chưa có playlist nhạc nào
+                  <button class="btn-u" data-toggle="modal" data-target="#add-new-music">Tạo mới</button>
+                <% else %>
+                  <%= raw current_user.user_musics.get_active.first.try(:url) %>
+                <% end %>
+              </span>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="video-playlist">
+            <button class="btn-u" style="margin-bottom: 10px" data-toggle="modal" data-target="#add-new-video"><i class="fa fa-plus"></i>Tạo mới</button>
+            <button class="btn-u" data-toggle="modal" data-target="#modal-help-create-video">Hướng dẫn thêm video</button>
+            <div class="panel panel-yellow margin-bottom-40">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><i class="fa fa-gear"></i> Quản lý video của bạn
+                  </h3>
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Tiêu đề</th>
+                      <th>Video</th>
+                      <th>Hành động</th>
+                    </tr>
+                  </thead>
+                  <tbody class="user-video-content">
+                    <%= render "users/table_user_video"%>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+          <!-- End Disabled Forms -->
         </div>
       </div>
     </div>
-    <!-- End Success Forms -->
-    <!-- Error Forms -->
-    <div class="tab-pane fade" id="post">
-      <%= link_to new_blog_path, class: "btn btn-primary" do %>
-        <i class="fa fa-pencil" aria-hidden="true">Tạo bài viết</i>
-      <%end%>
-    </div>
-    <div class="tab-pane fade" id="notification">
-    </div>
-    <!-- End Error Forms -->
-    <!-- Disabled Forms -->
-    <div class="tab-pane fade" id="change-info">
-      <% provide(:button_text, "Lưu thay đổi") %>
-      <%= render "form"%>
-    </div>
-    <div class="tab-pane fade" id="music-playlist">
-    </div>
-    <div class="tab-pane fade" id="video-playlist">
-    </div>
-    <!-- End Disabled Forms -->
   </div>
 </div>
-    </div>
-  </div><!--/end row-->
+<div class="modal-edit-music">
 </div>
+<div class="modal-edit-video">
+</div>
+<div class="modal-help-music">
+  <%= render "users/modal_help_music" %>
+</div>
+<div class="modal-help-video">
+  <%= render "users/modal_help_video" %>
+</div>
+<!-- Create Music Modal -->
+<div class="modal fade" id="add-new-music" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+        <h4 id="myModalLabel1" class="modal-title">Thêm mới danh sách nhạc</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for UserMusic.create, html: {class: "form-horizontal"}, remote: true do |f| %>
+          <div class="form-group">
+            <%= f.label :title, "Tiêu đề", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.text_area :title, class: "form-control",
+                placeholder: "Tiêu đề" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :description, "Mô tả", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.text_area :description, class: "form-control",
+                placeholder: "Mô tả" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :url, "Đường dẫn", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.text_area :url, class: "form-control",
+                placeholder: "Mã nhúng của danh sách nhạc" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :active, "Kích hoạt", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.check_box :active, class: "form-control" %>
+            </div>
+          </div>
+          <%= f.hidden_field :user_id, value: current_user.id%>
+          <div class="form-group form-actions">
+            <div class="col-md-10 col-md-offset-2">
+              <button data-dismiss="modal" class="btn-u btn-u-default" type="button">Hủy bỏ</button>
+              <%= f.submit "Thêm mới", class: "btn-u"%>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End create music modal -->
+<!-- Create Video Modal -->
+<div class="modal fade" id="add-new-video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-top: 20px;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+        <h4 id="myModalLabel1" class="modal-title">Thêm mới video yêu thích</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for UserVideo.create, html: {class: "form-horizontal"}, remote: true do |f| %>
+          <div class="form-group">
+            <%= f.label :title, "Tiêu đề", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.text_area :title, class: "form-control",
+                placeholder: "Tiêu đề" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :url, "Đường dẫn", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.text_area :url, class: "form-control",
+                placeholder: "Mã nhúng của danh sách nhạc" %>
+            </div>
+          </div>
+          <%= f.hidden_field :user_id, value: current_user.id%>
+          <div class="form-group form-actions">
+            <div class="col-md-10 col-md-offset-2">
+              <button data-dismiss="modal" class="btn-u btn-u-default" type="button">Hủy bỏ</button>
+              <%= f.submit "Thêm mới", class: "btn-u"%>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End create video modal-->
 <script type="text/javascript">
   $(".choose-cate :checkbox").change(function() {
     if(this.checked) {

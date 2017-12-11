@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :load_user
-
+  before_action :check_user, only: :show
   def index
     @users = User.all
+    binding.pry
   end
 
   def show
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
   def create # post
     @user = User.new user_params
     if @user.save
-      flash[:info] = "Tạo thành công"
+      flash[:info] = "Tạo thành công, vui lòng kiểm tra mail để kích hoạt tài khoản"
       redirect_to users_path
     else
       render :new
@@ -80,5 +81,10 @@ class UsersController < ApplicationController
     # return if @user
     # flash[:danger] = "User không tồn tại"
     # redirect_to users_url
+  end
+  def check_user
+    return if current_user == @user
+    redirect_to root_path
+    flash[:info] = "Bạn không thể xem thông tin người khác"
   end
 end

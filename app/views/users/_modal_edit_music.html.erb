@@ -1,0 +1,51 @@
+<div class="modal fade" id="edit-music" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+        <h4 id="myModalLabel1" class="modal-title">Chỉnh sửa danh sách nhạc</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @user_music, html: {class: "form-horizontal"}, remote: true do |f| %>
+          <div class="form-group">
+            <%= f.label :title, "Tiêu đề", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.text_area :title, class: "form-control",
+                placeholder: "Tiêu đề" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :description, "Mô tả", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.text_area :description, class: "form-control",
+                placeholder: "Mô tả" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :url, "Đường dẫn", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.text_area :url, class: "form-control",
+                placeholder: "Mã nhúng của danh sách nhạc" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :active, "Kích hoạt", class: "col-md-2 control-label" %>
+            <div class="col-md-10">
+              <%= f.check_box :active, class: "form-control" %>
+            </div>
+          </div>
+          <%= f.hidden_field :user_id, value: current_user.id%>
+          <div class="form-group form-actions">
+            <div class="col-md-10 col-md-offset-2">
+              <button data-dismiss="modal" class="btn-u btn-u-default" type="button">Hủy bỏ</button>
+              <%= f.submit "Lưu thay đổi", class: "btn-u"%>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

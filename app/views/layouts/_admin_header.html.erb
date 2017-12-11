@@ -1,0 +1,42 @@
+<div class="header header-sticky">
+  <div class="container" >
+    <div class="row">
+      <div class="topbar">
+        <ul class="loginbar pull-right">
+          <%= link_to t("home"), root_path %>
+          <li class="topbar-devider"></li>
+        <li class="hoverSelector">
+          <i class="fa fa-globe"></i>
+          <a><%= t"language.languages" %></a>
+          <ul class="languages hoverSelectorBlock">
+            <li>
+              <%= link_to "javascript:", class: "admin-choose-language", id: "vi" do %>
+                <%= t "language.vi" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "javascript:", class: "admin-choose-language", id: "en" do %>
+                <%= t "language.en" %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+        <li class="topbar-devider"></li>
+          <li class="hoverSelector">
+            <a><%= t "admin.welcome" %>: <%= current_admin.name%></a>
+            <ul class="languages hoverSelectorBlock" style="min-width: 150px">
+              <li><%= link_to t("admin.logout"), destroy_user_session_path, :method => :delete %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Topbar -->
+    <!-- Toggle get grouped for better mobile display -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="fa fa-bars"></span>
+    </button>
+    <!-- End Toggle -->
+  </div>
+</div>

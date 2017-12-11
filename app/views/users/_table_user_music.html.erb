@@ -1,0 +1,22 @@
+<% if current_user.user_musics.present? %>
+  <% current_user.user_musics.each do |us| %>
+    <tr class="us-<%=us.id%>">
+      <td><%= us.title %></td>
+      <td>
+        <% if us.active %>
+          <a class="btn btn-success btn-xs">Kích hoạt</a>
+        <% else %>
+          <a class="btn btn-danger btn-xs">Đang tắt</a>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to edit_user_music_path(us.id),remote: true, class: "btn btn-xs btn-default" do %><i class="fa fa-pencil"></i>Sửa<% end %>
+        <%= link_to user_music_path(us), method: :delete, remote: true, data: {confirm: "Bạn chắc chắn muốn xóa ?"},
+          class: "btn btn-danger btn-xs" do %>
+            <i class="fa fa-trash-o"></i>Xóa
+          <% end %>
+      </td>
+    </tr>
+  <% end %>
+<% else %>
+<% end %>

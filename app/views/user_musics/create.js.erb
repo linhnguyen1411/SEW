@@ -1,0 +1,8 @@
+<% if @success == true %>
+  swal('Thêm thành công','','success');
+  $('#add-new-music').modal('hide');
+  $('.user-music-content').html('<%= j render "users/table_user_music" %>');
+  $('.user-music').html('<%= raw current_user.user_musics.get_active.first.try(:url) %>');
+<% else %>
+  swal('Thêm thất bại','','danger');
+<% end %>
