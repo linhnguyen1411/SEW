@@ -1,0 +1,20 @@
+<%= form_for([:admin, @category], html: { class: "form-horizontal form-bordered form-control-borderless", style: "padding-top: 20px" }, remote: true) do |f| %>
+<div class="form-group">
+  <%= f.label :category_group_id, "Tiêu đề", class: "col-md-2 control-label" %>
+  <div class="col-md-10">
+    <%= f.select(:category_group_id, CategoryGroup.all.collect {|c| [c.name, c.id]}, {}, {class: "form-control"} ) %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :name, "Name", class: "col-md-2 control-label" %>
+  <div class="col-md-10">
+    <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+  </div>
+</div>
+<div class="form-group form-actions">
+  <div class="col-md-9 col-md-offset-3">
+    <%= f.submit yield(:button_text), class: "btn btn-sm btn-primary" %>
+    <%= link_to 'Back', admin_category_groups_path, class: "btn btn-sm btn-success" %>
+  </div>
+</div>
+<% end %>

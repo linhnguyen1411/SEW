@@ -1,0 +1,41 @@
+<%= form_for([:admin, @news], html: { class: "form-horizontal form-bordered form-control-borderless", style: "padding-top: 20px" }, remote: true) do |f| %>
+<div class="form-group">
+  <%= f.label :category_id, "Tiêu đề", class: "col-md-2 control-label" %>
+  <div class="col-md-10">
+    <%= f.select(:category_id, Category.all.collect {|c| [c.name, c.id]}, {}, {class: "form-control"} ) %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :title, "Tiêu đề", class: "col-md-2 control-label" %>
+  <div class="col-md-10">
+    <%= f.text_field :title, class: "form-control", placeholder: "Tiêu đề bài viết" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :description, "Mô tả", class: "col-md-2 control-label" %>
+  <div class="col-md-10">
+    <%= f.text_area :description, class: "form-control ckeditor", placeholder: "Mô tả bài viết" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :link, "Đường dẫn bài viết", class: "col-md-2 control-label" %>
+  <div class="col-md-10">
+    <%= f.text_field :link, class: "form-control", placeholder: "Đường dẫn đến bài viết" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :image, "Đường dẫn hình ảnh", class: "col-md-2 control-label" %>
+  <div class="col-md-10">
+    <%= f.text_field :image, class: "form-control", placeholder: "Đường dẫn đến hình ảnh của bài viết" %>
+  </div>
+</div>
+<%= f.hidden_field :pubDate, value: Time.now %>
+<%= f.hidden_field :rss_url_id, value: 1 %>
+
+<div class="form-group form-actions">
+  <div class="col-md-10 col-md-offset-2">
+    <%= f.submit yield(:button_text), class: "btn btn-sm btn-primary" %>
+    <%= link_to "Quay lại",admin_news_index_path, class: "btn btn-sm btn-primary" %>
+  </div>
+</div>
+<% end %>

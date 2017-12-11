@@ -1,0 +1,9 @@
+<% provide(:button_text, "Thêm mới người dùng") %>
+<div id="page-content">
+  <div class="block full">
+    <div class="block-title text-center">
+      <h1>Thêm mới người dùng</h1>
+    </div>
+      <%= render "form", locals: {user: @user}  %>
+  </div>
+</div>

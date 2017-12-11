@@ -9,6 +9,7 @@ class News < ApplicationRecord
   scope :get_news_by_category, -> id{where category_id: id}
   scope :get_news_by_list_category, ->list {where "category_id IN (?)", list}
 
+  validates :rss_url_id,length: {maximum: 250}, allow_nil: true
 
   private
 

@@ -1,0 +1,45 @@
+<div class="tab-v1">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#list" data-toggle="tab">List</a></li>
+    <li>
+      <%= link_to new_admin_category_group_path do %>
+        <i class="fa fa-plus" aria-hidden="true"></i>Add new
+      <% end %>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="list">
+      <div class="panel panel-red margin-bottom-40">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-user"></i> List of Category Groups </h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @category_groups.each do |ctg|%>
+                  <tr class="ctg-<%=ctg.id%>">
+                    <td><%= ctg.id %></td>
+                    <td><%= ctg.name %></td>
+                    <td>
+                      <%= link_to edit_admin_category_group_path(ctg.id), class: "btn btn-xs btn-default" do %><i class="fa fa-pencil"></i> Edit<% end %>
+                      <%= link_to admin_category_group_path(ctg), method: :delete, remote: true, data: {confirm: "Bạn chắc chắn muốn xóa ?"},
+                        class: "btn btn-danger btn-xs" do %>
+                          <i class="fa fa-trash-o"></i>Remove
+                        <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

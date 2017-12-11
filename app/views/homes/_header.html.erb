@@ -33,9 +33,7 @@
           <li class="hoverSelector">
             <a>Welcome: <%= current_admin.name%></a>
             <ul class="languages hoverSelectorBlock" style="min-width: 150px">
-              <li class="">
-                <%= link_to "Get News Feed ", new_news_path%>
-              </li>
+              <li><%= link_to "Trang quản trị", admins_path %></li>
               <li><%= link_to "Đăng xuất", destroy_user_session_path, :method => :delete %></li>
             </ul>
           </li>

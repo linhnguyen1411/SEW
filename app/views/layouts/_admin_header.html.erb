@@ -1,0 +1,25 @@
+<div class="header header-sticky">
+  <div class="container" >
+    <div class="row">
+      <div class="topbar">
+        <ul class="loginbar pull-right">
+          <%= link_to "Home", root_path %>
+          <li class="topbar-devider"></li>
+          <li class="hoverSelector">
+            <a>Welcome: <%= current_admin.name%></a>
+            <ul class="languages hoverSelectorBlock" style="min-width: 150px">
+              <li><%= link_to "Đăng xuất", destroy_user_session_path, :method => :delete %></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Topbar -->
+    <!-- Toggle get grouped for better mobile display -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="fa fa-bars"></span>
+    </button>
+    <!-- End Toggle -->
+  </div>
+</div>
